@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Welcome, {{ user.name }}!</h1>
+    <button onclick="location.href='/blogs/create'">Create New Blog</button>
+
+    <div class="user-blogs">
+        {% for blog in blogs %}
+        <div class="blog-card">
+            <h2>{{ blog.title }}</h2>
+            <p>{{ blog.summary }}</p>
+            <button onclick="location.href='/blogs/edit/{{ blog.id }}'">Edit</button>
+            <form method="POST" action="/blogs/delete/{{ blog.id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
