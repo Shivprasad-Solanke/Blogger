@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from app.pages.dashboard import dashboard_router
 
 app = FastAPI()
 
