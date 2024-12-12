@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Blog - Medium Style</title>
+ <link rel="stylesheet" href="/static/css/write.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="editor-container">
+        <h1>Create Your Blog Post</h1>
+        <div class="editor">
+            <input type="text" id="blogTitle" placeholder="Enter your blog title" />
+            <textarea id="blogContent" placeholder="Write your blog content here..."></textarea>
+            <input type="file" id="imageUpload" accept="image/*" />
+            <button id="publishBtn">Publish</button>
+        </div>
+        <h2>Blog Preview</h2>
+        <div id="preview" class="preview" >
+            <img id="previewImage" src="" alt="Preview Image" style="display: none;">
+            <div class="text">
+                <h3 id="previewTitle"></h3>
+                <p id="previewContent"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+        document.getElementById('publishBtn').addEventListener('click', function () {
+            const title = document.getElementById('blogTitle').value;
+            const content = document.getElementById('blogContent').value;
+            const imageUpload = document.getElementById('imageUpload');
+            const previewImage = document.getElementById('previewImage');
+
+            // Update the preview
+            document.getElementById('previewTitle').innerText = title;
+            document.getElementById('previewContent').innerText = content;
+
+            if (imageUpload.files && imageUpload.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+                reader.readAsDataURL(imageUpload.files[0]);
+            } else {
+                previewImage.style.display = 'none';
+            }
+        });
+
+        // Load the navbar.html content into the #navbar div
+        fetch('navbar.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+
+            fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    </script>
+</body>
+</html>

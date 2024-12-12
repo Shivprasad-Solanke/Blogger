@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+.editor-container {
+    max-width: 800px;
+    margin: 20px auto 80px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.editor-container h1 {
+    margin-bottom: 10px;
+}
+.editor {
+    margin: 10px 20px 0px 0px;
+}
+.editor textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.editor input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.editor img {
+    max-width: 100%;
+    margin-top: 10px;
+}
+.editor button {
+    background: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editor button:hover {
+    background: #0056b3;
+}
+.preview{
+    margin:20px auto 0;
+}
+#preview img{
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+    max-width: 100%;
+    margin-top: 10px;
+}
+#previewTitle{
+    width: 100%;
+    height: 70%;
+
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-left: 60px;
+}
