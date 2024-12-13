@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/Blogger/static/css/dashboard.css">
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --card-bg: #fff;
+            --navbar-bg: #f4f4f9;
+            --navbar-text: #333;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #181818;
+            --text-color: #f4f4f9;
+            --card-bg: #242424;
+            --navbar-bg: #000;
+            --navbar-text: #fff;
+        }
+
+        body {
+            max-width: 100vw;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            background-color: var(--navbar-bg);
+            color: var(--navbar-text);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            margin-left: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .navbar a {
+            color: var(--navbar-text);
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 1rem;
+        }
+
+        .left-nav {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 1rem;
+            margin-right: 2rem;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--navbar-text);
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .main-content {
+            max-width: 70%;
+        }
+
+        .sidebar {
+            flex: 20%;
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+        }
+
+        .card-header {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-content {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icons span {
+            margin-right: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .card-timestamp {
+            font-size: 0.8rem;
+            text-align: right;
+        }
+
+        .hero-section {
+            display: flex;
+            max-width: 90%;
+            margin: 1rem auto;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .tabs button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .tabs button.active {
+            font-weight: bold;
+            border-bottom: 2px solid var(--text-color);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 1rem 0;
+        }
+
+        .sidebar-content {
+            font-size: 0.9rem;
+        }
+
+        .sidebar-content h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Blog Dashboard</h1>
+        <div class="left-nav">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <div class="main-content">
+            <div class="tabs">
+                <button class="active" id="tab-blogs">Blogs</button>
+                <button id="tab-updates">Updates</button>
+                <button id="tab-settings">Settings</button>
+            </div>
+            <hr>
+            <div id="post-container">
+                <!-- Blog cards will be dynamically inserted here -->
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <h3>Profile Info</h3>
+                <p><strong>Username:</strong> demo_user</p>
+                <p><strong>Email:</strong> demo@example.com</p>
+                <p><strong>About:</strong> This is a dummy profile for the sidebar content demonstration.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Blogger. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const postContainer = document.getElementById("post-container");
+            const themeToggle = document.getElementById("theme-toggle");
+            const root = document.documentElement;
+
+            themeToggle.addEventListener("click", () => {
+                const currentTheme = root.getAttribute("data-theme");
+                root.setAttribute("data-theme", currentTheme === "dark" ? "light" : "dark");
+                themeToggle.textContent = currentTheme === "dark" ? "🌙" : "☀️";
+            });
+
+            // Fetch blogs from API
+            fetch("http://localhost:8000/posts/details")
+                .then((response) => response.json())
+                .then((data) => {
+                    const posts = data.posts; // Assuming the response is {posts: [...]}.
+                    posts.forEach((post) => {
+                        const card = createCard(post);
+                        postContainer.appendChild(card);
+                    });
+                })
+                .catch((error) => console.error("Error fetching posts:", error));
+
+            // Function to create a card element
+            function createCard(post) {
+                const card = document.createElement("div");
+                card.classList.add("card");
+
+                // Format the timestamp
+                let formattedDate = "Unknown Date";
+                if (post.created_at) {
+                    const creationDate = new Date(post.created_at);
+                    if (!isNaN(creationDate)) {
+                        formattedDate = creationDate.toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                        });
+                    }
+                }
+
+                card.innerHTML = `
+                    <div class="card-header">${post.title}</div>
+                    <div class="card-subtitle">By: ${post.author_name}</div>
+                    <div class="card-content">${post.content_snippet}</div>
+                    <div class="card-icons">
+                        <span><i class="fas fa-thumbs-up"></i> ${post.likes_count}</span>
+                        <span><i class="fas fa-thumbs-down"></i> ${post.dislikes_count}</span>
+                        <span><i class="fas fa-comments"></i> ${post.comments_count}</span>
+                    </div>
+                    <div class="card-timestamp">Created on: ${formattedDate}</div>
+                `;
+                return card;
+            }
+        });
+    </script>
+</body>
+</html>
