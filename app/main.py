@@ -5,7 +5,8 @@ from app.routes import router  # Import router to include all modular routes
 from app.database import posts_collection
 from app.pages.utils import convert_objectid
 from bson import ObjectId  # To work with MongoDB's ObjectId
-
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List
 
 app = FastAPI()
 
