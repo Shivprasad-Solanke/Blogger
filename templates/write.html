@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Blog - Medium Style</title>
+    <link rel="stylesheet" href="/static/css/write.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="editor-container">
+        <h1>Create Your Blog Post</h1>
+        <form id="blogForm">
+            <div class="editor">
+                <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                <textarea id="blogContent" name="content" placeholder="Write your blog content here..." required></textarea>
+                
+                <input type="file" id="imageUpload" name="image" accept="image/*" />
+                <button type="button" id="previewBtn">Preview</button>
+                <button type="submit" id="publishBtn">Publish</button>
+            </div>
+        </form>
+        <h2>Blog Preview</h2>
+        <div id="preview" class="preview">
+            <img id="previewImage" src="" alt="Preview Image" style="display: none;">
+            <div class="text">
+                <h3 id="previewTitle"></h3>
+                <p id="previewContent"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+   <script src="/static/js/write.js"></script>
+</body>
+</html>

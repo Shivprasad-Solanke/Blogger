@@ -75,3 +75,7 @@ body {
     align-items: start;
     margin-left: 60px;
 }
+
+#imageUpload{
+    cursor: pointer;
+}
