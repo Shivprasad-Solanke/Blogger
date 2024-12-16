@@ -1,14 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const blogContainer = document.getElementById("blog-container");
-    const themeToggle = document.getElementById("theme-toggle");
-    const root = document.documentElement;
-
     // Toggle theme
-    themeToggle.addEventListener("click", () => {
-        const currentTheme = root.getAttribute("data-theme");
-        root.setAttribute("data-theme", currentTheme === "dark" ? "light" : "dark");
-        themeToggle.textContent = currentTheme === "dark" ? "🌙" : "☀️";
-    });
+
 
     // Fetch blog posts from the API
     fetch("http://localhost:8000/posts/details")
@@ -65,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
  
  // Load the navbar.html content into the #navbar div
- fetch('navbar.html')
+ fetch('shared/navbar.html')
  .then(response => {
      if (!response.ok) {
          throw new Error('Network response was not ok ' + response.statusText);
@@ -77,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
  })
  .catch(error => console.error('Error loading navbar:', error));
 
- fetch('footer.html')
+ fetch('shared/footer.html')
  .then(response => {
      if (!response.ok) {
          throw new Error('Network response was not ok ' + response.statusText);
