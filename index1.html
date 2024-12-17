@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f4f4;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;    /* Center vertically */
+            min-height: 100vh;      /* Full viewport height */
+        }
+
+        /* Responsive Container */
+        .container {
+            width: 90%;              /* Responsive width */
+            max-width: 600px;        /* Maximum width */
+            min-width: 480px;        /* Minimum width */
+            background-color: white; /* Background for readability */
+            border: 1px solid #ddd;  /* Light border */
+            border-radius: 8px;      /* Rounded corners */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            overflow: hidden;        /* Prevent content overflow */
+        }
+
+        nav {
+            background-color: #383531de;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        header {
+            text-align: center;
+            padding: 15px;
+            background-color: #bdc2c4;
+        }
+
+        main {
+            padding: 20px;
+            line-height: 1.6; /* Improve readability */
+        }
+
+        #commentsSection {
+            margin: 20px;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        #commentForm textarea {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #commentsList {
+            margin-top: 10px;
+        }
+
+        .comment {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/home">𝐇𝐨𝐦𝐞</a>
+            <a href="/dashboard">𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+            <a href="/login">𝐋𝐨𝐠𝐢𝐧</a>
+            <a href="/signup">𝐒𝐢𝐠𝐧𝐮𝐩</a>
+        </nav>
+
+        <header>
+            <h1 id="Blogger">𝐁𝐥𝐨𝐠𝐠𝐞𝐫</h1>
+            <p><small id="blogInfo">𝐁𝐲 𝐀𝐮𝐭𝐡𝐨𝐫 | 𝐏𝐮𝐛𝐥𝐢𝐬𝐡𝐞𝐝: 𝐃𝐚𝐭𝐞</small></p>
+        </header>
+
+        <main id="blogContent">
+            <p>This is where the blog content will appear...</p>
+        </main>
+
+        <section id="commentsSection">
+            <h3>𝐂𝐨𝐦𝐦𝐞𝐧𝐭𝐬</h3>
+            <div id="commentsList">
+                <!-- Dynamically loaded comments will appear here -->
+            </div>
+            <form id="commentForm">
+                <textarea id="commentInput" placeholder="Write a comment..."></textarea>
+                <button type="submit">𝐏𝐨𝐬𝐭 𝐂𝐨𝐦𝐦𝐞𝐧𝐭</button>
+            </form>
+        </section>
+
+        <footer>
+            <button id="likeButton">𝐋𝐢𝐤𝐞👍 (<span id="likeCount">0</span>)</button>
+            <button id="dislikeButton">𝐃𝐢𝐬𝐥𝐢𝐤𝐞👎 (<span id="DislikeCount">0</span>)</button>
+        </footer>
+    </div>
+</body>
+</html>
