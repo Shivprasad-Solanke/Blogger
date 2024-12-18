@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     const blogContainer = document.getElementById("blog-container");
-    // Toggle theme
-
 
     // Fetch blog posts from the API
     fetch("http://localhost:8000/posts/details")
@@ -19,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function createBlogCard(post) {
         const card = document.createElement("div");
         card.classList.add("blog-card");
+        card.setAttribute("data-id", post.id); // Set blog ID
 
         // Format the date
         let formattedDate = "Unknown Date";
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Add content to the card
         card.innerHTML = `
             <div class="card-content-wrapper">
-                 <div class="card-text">
+                <div class="card-text">
                     <div class="card-header">${post.title}</div>
                     <div class="card-subtitle">By: ${post.author_name} | ${formattedDate}</div>
                     <div class="card-content">${post.content_snippet}</div>
@@ -46,38 +45,33 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span><i class="fas fa-comments"></i> ${post.comments_count}</span>
                     </div>
                 </div>
-                    <div class="card-image">
-                        <img src="${post.image_url}" alt="Blog image">
-                    </div>
+                <div class="card-image">
+                    <img src="${post.image_url}" alt="Blog image">
+                </div>
             </div>
-`;
+        `;
 
+        // Add click event to navigate to the blog details page
+        card.addEventListener("click", () => {
+            window.location.href = `/post.html?id=${post.id}`;
+        });
 
         return card;
     }
-});
- 
- // Load the navbar.html content into the #navbar div
- fetch('shared/navbar.html')
- .then(response => {
-     if (!response.ok) {
-         throw new Error('Network response was not ok ' + response.statusText);
-     }
-     return response.text();
- })
- .then(data => {
-     document.getElementById('navbar').innerHTML = data;
- })
- .catch(error => console.error('Error loading navbar:', error));
 
- fetch('shared/footer.html')
- .then(response => {
-     if (!response.ok) {
-         throw new Error('Network response was not ok ' + response.statusText);
-     }
-     return response.text();
- })
- .then(data => {
-     document.getElementById('footer').innerHTML = data;
- })
- .catch(error => console.error('Error loading footer:', error));
+    // Load the navbar
+    fetch('shared/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+
+    // Load the footer
+    fetch('shared/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+});

@@ -4,14 +4,16 @@ from bson import ObjectId  # To work with MongoDB's ObjectId
 from app.pages.utils import convert_objectid
 from app.models import Post
 from datetime import datetime, timezone
+import pytz
 
 blog_router = APIRouter()
-
+#post POSTS
 @blog_router.post("/posts/")
 async def create_post(post: Post):
     # Add a timestamp to the post data
     post_data = post.dict()
-    post_data["created_at"] = datetime.now(timezone.utc)
+    ist_timezone = pytz.timezone("Asia/Kolkata")
+    post_data["created_at"] = datetime.now(ist_timezone)
 
     # Insert the post into the database
     await posts_collection.insert_one(post_data)
