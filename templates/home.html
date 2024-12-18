@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <script src="/static/js/shared/navbar.js" defer></script>
 
+    <!-- Search Bar (Centered) -->
+    <div class="search-bar">
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Search..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <!-- Main Content -->
+    <main>
+        <div class="blog-container" id="blog-container">
+            <!-- Blog cards will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    
+    <!-- Scripts -->
+    <script src="/static/js/home.js" type="module" defer></script>
+</body>
+</html>

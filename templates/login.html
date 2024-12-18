@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.querySelector("form");
+    
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent form submission from reloading the page
+    
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+    
+            try {
+                const response = await fetch("http://127.0.0.1:8000/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    // Store JWT securely
+                    localStorage.setItem("access_token", data.access_token);
+    
+                    // Redirect to the dashboard or homepage
+                    window.location.href = "home.html";
+                } else {
+                    const errorData = await response.json();
+                    alert(errorData.detail || "Login failed. Please try again.");
+                }
+            } catch (error) {
+                alert("An error occurred. Please try again later.");
+            }
+        });
+    </script>
+    
+
+</body>
+</html>

@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 
 blog_router = APIRouter()
 
-@blog_router.post("/posts/")
+@blog_router.post("/write")
 async def create_post(post: Post):
     # Add a timestamp to the post data
     post_data = post.dict()
@@ -26,7 +26,7 @@ async def get_all_posts():
     return {"posts": posts}
 
 # get single POST
-@blog_router.get("/posts/{post_id}/")
+@blog_router.get("/post/{post_id}/")
 async def get_post(post_id: str):
     # Convert the post_id to ObjectId
     try:
