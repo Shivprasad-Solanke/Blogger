@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Page</title>
+  <link rel="stylesheet" href="/static/css/post.css">
+</head>
+<body>
+  <div class="blog-container">
+    <h1 id="blog-title">The Art of Web Development</h1>
+    <p id="blog-content">
+      Web development is an ever-evolving field that requires constant learning and adaptation...
+      lorem5000
+
+    </p>
+
+    <!-- Like, Dislike, and Comment Section -->
+    <div class="interactions">
+      <div class="likes-dislikes">
+        <button id="like-btn">👍 <span id="like-count">0</span></button>
+        <button id="dislike-btn">👎 <span id="dislike-count">0</span></button>
+      </div>
+      <button id="comment-btn">💬 Comments (<span id="comment-count">0</span>)</button>
+    </div>
+
+    <!-- Comment Section -->
+    <div id="comments-section" class="hidden">
+      <h3>Comments</h3>
+      <ul id="comment-list"></ul>
+      <textarea id="new-comment" placeholder="Write a comment..."></textarea>
+      <button id="submit-comment">Submit</button>
+    </div>
+  </div>
+
+  <script src="/static/js/post.js"></script>
+</body>
+</html>
