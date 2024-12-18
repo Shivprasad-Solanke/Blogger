@@ -1,19 +1,26 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/Blogger/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
 </head>
 <body>
     <div class="navbar">
-        <h1>Blog Dashboard</h1>
+        
+        Search Bar (Centered)
+        <div class="search-bar">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search..." />
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
         <div class="left-nav">
             <nav>
                 <a href="#"><i class="fa-regular fa-pen-to-square"></i> Write</a>
-                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#" id="profile-icon"><i class="fas fa-user"></i></a>
             </nav>
             <button class="theme-toggle" id="theme-toggle">🌙</button>
         </div>
@@ -26,12 +33,13 @@
                 <button id="tab-updates">Updates</button>
                 <button id="tab-settings">Settings</button>
             </div>
+            
             <hr>
             <div id="post-container">
-                <!-- Blog cards will be dynamically inserted here -->
+                Blog cards will be dynamically inserted here
             </div>
         </div>
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="sidebar-content">
                 <h3>Profile Info</h3>
                 <p><strong>Username:</strong> demo_user</p>
@@ -41,67 +49,73 @@
         </div>
     </div>
 
+    Footer 
+    <footer>
+        <p>&copy; 2024 Blogger. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/card.js"></script>
+    
+</body>
+</html> 
+    -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/card.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="left-nav">
+            <h1>Blogger Dashboard</h1>
+        </div>
+        <div class="right-nav">
+            <nav>
+                <a href="#" id="profile-icon"><i class="fas fa-user"></i></a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Search your posts..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <div class="hero-section">
+        <div class="main-content">
+            <h2>Your Posts</h2>
+            <div id="post-container">
+                <!-- Blog cards will be dynamically inserted here -->
+            </div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <h3>Profile Info</h3>
+                <p><strong>Username:</strong> demo_user</p>
+                <p><strong>Email:</strong> demo@example.com</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Blogger. All rights reserved.</p>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const postContainer = document.getElementById("post-container");
-            const themeToggle = document.getElementById("theme-toggle");
-            const root = document.documentElement;
-
-            themeToggle.addEventListener("click", () => {
-                const currentTheme = root.getAttribute("data-theme");
-                root.setAttribute("data-theme", currentTheme === "dark" ? "light" : "dark");
-                themeToggle.textContent = currentTheme === "dark" ? "🌙" : "☀️";
-            });
-
-            // Fetch blogs from API
-            fetch("http://localhost:8000/posts/details")
-                .then((response) => response.json())
-                .then((data) => {
-                    const posts = data.posts; // Assuming the response is {posts: [...]}.
-                    posts.forEach((post) => {
-                        const card = createCard(post);
-                        postContainer.appendChild(card);
-                    });
-                })
-                .catch((error) => console.error("Error fetching posts:", error));
-
-            // Function to create a card element
-            function createCard(post) {
-                const card = document.createElement("div");
-                card.classList.add("card");
-
-                // Format the timestamp
-                let formattedDate = "Unknown Date";
-                if (post.created_at) {
-                    const creationDate = new Date(post.created_at);
-                    if (!isNaN(creationDate)) {
-                        formattedDate = creationDate.toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "short",
-                            day: "numeric",
-                        });
-                    }
-                }
-
-                card.innerHTML = `
-                    <div class="card-header">${post.title}</div>
-                    <div class="card-subtitle">By: ${post.author_name}</div>
-                    <div class="card-content">${post.content_snippet}</div>
-                    <div class="card-icons">
-                        <span><i class="fas fa-thumbs-up"></i> ${post.likes_count}</span>
-                        <span><i class="fas fa-thumbs-down"></i> ${post.dislikes_count}</span>
-                        <span><i class="fas fa-comments"></i> ${post.comments_count}</span>
-                    </div>
-                    <div class="card-timestamp">Created on: ${formattedDate}</div>
-                `;
-                return card;
-            }
-        });
-    </script>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/card.js"></script>
 </body>
 </html>

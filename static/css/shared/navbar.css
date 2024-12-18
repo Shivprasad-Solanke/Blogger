@@ -1,0 +1,208 @@
+/* :root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --navbar-bg: #f4f4f9;
+    --navbar-text: #333;
+}
+
+[data-theme="dark"] {
+    --bg-color: #181818;
+    --text-color: #f4f4f9;
+    --navbar-bg: #000;
+    --navbar-text: #fff;
+}
+.navbar {
+    background-color: var(--navbar-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    color: var(--navbar-text);
+    margin: 0;
+}
+
+.navbar-options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-options a {
+    text-decoration: none;
+    color: var(--navbar-text);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-options a:hover {
+    background-color: #ddd;
+}
+
+.navbar-options a.active {
+    transform: scale(1.2);
+}
+
+.navbar-options a:not(.active) {
+    transform: scale(1);
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-bar input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-bar .fa-search {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--navbar-text);
+    font-size: 1.2rem;
+    margin-left: 1rem;
+} */
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
+.navbar h1 {
+    font-size: 1.5em;
+}
+
+.navbar #navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar a.btn {
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.navbar a.btn:hover {
+    background-color: #0056b3;
+}
+
+#profile-icon {
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.sidebar {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 150px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.sidebar ul li:last-child {
+    border-bottom: none;
+}
+
+.sidebar ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.search-bar form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
