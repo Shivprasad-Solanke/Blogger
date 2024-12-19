@@ -1,49 +1,4 @@
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     // Get the relevant elements by ID
-//     const postTitle = document.getElementById("post-title");
-//     const postAuthor = document.getElementById("post-author");
-//     const postTimestamp = document.getElementById("post-timestamp");
-//     const postContent = document.getElementById("post-content");
-//     const likeCount = document.getElementById("like-count");
-//     const dislikeCount = document.getElementById("dislike-count");
-//     const commentCount = document.getElementById("comment-count");
-//     const commentsList = document.getElementById("comments-list");
-
-//     // Get post_id from the URL
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const postId = urlParams.get("post_id");
-
-//     if (!postId) {
-//         postContent.innerHTML = "<p>Post not found.</p>";
-//         return;
-//     }
-
-//     // Fetch the post details
-//     fetch(`http://127.0.0.1:8000/posts/${postId}`)
-//         .then((response) => response.json())
-//         .then((data) => renderPost(data.post))
-//         .catch((error) => console.error("Error fetching post:", error));
-
-//     function renderPost(post) {
-//         // Populate the post details
-//         postTitle.textContent = post.title;
-//         postAuthor.textContent = `By ${post.author_name}`;
-//         postTimestamp.textContent = new Date(post.created_at).toLocaleDateString();
-//         postContent.innerHTML = post.content;
-//         likeCount.textContent = post.likes_count;
-//         dislikeCount.textContent = post.dislikes_count;
-//         commentCount.textContent = post.comments_count;
-
-//         // Render the comments
-//         commentsList.innerHTML = post.comments.map(comment => `
-//             <li>
-//                 <p>${comment.content}</p>
-//                 <p>By: ${comment.author_name}</p>
-//             </li>
-//         `).join('');
-//     }
-// });
 
 
 document.addEventListener("DOMContentLoaded", () => {

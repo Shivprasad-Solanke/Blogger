@@ -18,8 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // User is logged in
             navbarRight.innerHTML = `
                 <a href="#" id="profile-icon"><i class="fas fa-user"></i></a>
-                <div id="user-sidebar" class="sidebar hidden">
+                <div id="user-sidebar" class="sidebar">
                     <ul>
+                    <li><a href="/templates/home.html">Home</a></li>
+                    <li><a href="/templates/write.html">Write</a></li>
                         <li><a href="/templates/dashboard.html">Dashboard</a></li>
                         <li><a href="/profile.html">Profile</a></li>
                         <li><a href="#" id="sign-out">Sign Out</a></li>
@@ -42,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const userSidebar = document.getElementById("user-sidebar");
         profileIcon.addEventListener("click", (event) => {
             event.preventDefault();
-            userSidebar.classList.toggle("hidden");
+            userSidebar.classList.toggle("visible");
         });
 
         // Handle Sign Out
