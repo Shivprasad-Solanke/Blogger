@@ -22,12 +22,16 @@
             </div>
             <div id="post-content"></div>
             <div class="post-stats">
-                <span id="post-likes"><i class="fas fa-thumbs-up"></i> <span id="like-count"></span></span>
-                <span id="post-dislikes"><i class="fas fa-thumbs-down"></i> <span id="dislike-count"></span></span>
+                <button id="like-button"><i class="fas fa-thumbs-up"></i><span id="like-count">0</span></button>
+                <button id="dislike-button"><i class="fas fa-thumbs-down"></i><span id="dislike-count">0</span></button>
             </div>
             <div class="post-comments">
                 <h3>Comments (<span id="comment-count"></span>)</h3>
                 <ul id="comments-list"></ul>
+            </div>
+            <div class="comment-form">
+                <textarea id="new-comment" placeholder="Write your comment here..." rows="4"></textarea>
+                <button id="submit-comment">Submit Comment</button>
             </div>
         </div>
     </main>

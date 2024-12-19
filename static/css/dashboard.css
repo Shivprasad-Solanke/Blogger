@@ -112,6 +112,16 @@ body.sidebar-active {
     padding: 1rem;
 }
 
+#post-container {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        text-decoration: none;
+}
+
 /* Post Card Styles */
 .post-card {
     background: var(--card-bg);

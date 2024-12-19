@@ -8,29 +8,25 @@
     <link rel="stylesheet" href="/static/css/write.css">
 </head>
 <body>
-    <div class="navbar">
-        <h1>BLOGGER</h1>
-        <div class="search-bar">
-            <input type="text" placeholder="Search...">
-            <i class="fas fa-search"></i>
-        </div>
-        <div class="navbar-options">
-            <a href="#" id="write-btn">Write</a>
-            <a href="#" id="signin-btn">Sign In</a>
-            <a href="#" id="login-btn">Log In</a>
-            <button class="theme-toggle" id="theme-toggle">🌙</button>
-        </div>
-    </div>
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <script src="/static/js/shared/navbar.js" defer></script>
 
     <main>
         <div class="editor-container">
             <h1>Create Your Blog Post</h1>
-            <form id="blogForm" >
+            <form id="blogForm">
                 <div class="editor">
+                    <!-- Title Input -->
                     <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                    
+                    <!-- Content Textarea -->
                     <textarea id="blogContent" name="content" placeholder="Write your blog content here..." required rows="10"></textarea>
                     
-                    <!-- <input type="file" id="imageUpload" name="image" accept="image/*" /> -->
+                    <!-- Tags Input -->
+                    <input type="text" id="blogTags" name="tags" placeholder="Enter tags, separated by commas" />
+
+                    <!-- Preview and Publish Buttons -->
                     <button type="button" id="previewBtn">Preview</button>
                     <button type="submit" id="publishBtn">Publish</button>
                 </div>
@@ -38,10 +34,11 @@
             
             <h2>Blog Preview</h2>
             <div id="preview" class="preview">
-                <!-- <img id="previewImage" src="" alt="Preview Image" style="display: none;"> -->
+                <!-- Blog Preview Content -->
                 <div class="text">
                     <h3 id="previewTitle"></h3>
                     <p id="previewContent"></p>
+                    <p id="previewTags"></p>
                 </div>
             </div>
         </div>
