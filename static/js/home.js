@@ -48,10 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
     function createCard(post) {
         const card = document.createElement("div");
         card.classList.add("card");
-
+    
         const formattedDate = post.created_at
             ? new Date(post.created_at).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -59,8 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 day: "numeric",
             })
             : "Unknown Date";
-
-        card.innerHTML = `
+    
+        // Create an anchor tag to wrap the card content
+        const postLink = document.createElement("a");
+        postLink.href = `/templates/post.html?post_id=${post._id}`;  // Link to the post page
+        postLink.classList.add("post-link");  // Optional: Add a class for styling
+    
+        // Fill the card content inside the anchor tag
+        postLink.innerHTML = `
             <div class="card-header">${post.title}</div>
             <div class="card-details">
                 <div class="card-subtitle">By: ${post.author_name}</div>
@@ -73,10 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span><i class="fas fa-comments"></i> ${post.comments_count}</span>
             </div>
         `;
+    
+        // Append the anchor tag to the card
+        card.appendChild(postLink);
+    
         return card;
     }
+    
 
-    // Update the URL with the query
+    // // Update the URL with the query
     function updateUrlWithQuery(query) {
         const baseUrl = window.location.pathname; // This gets the current page's URL without query parameters
         const newUrl = query ? `${baseUrl}?query=${encodeURIComponent(query)}` : baseUrl; // Add the query parameter
