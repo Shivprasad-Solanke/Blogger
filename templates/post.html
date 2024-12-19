@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/post.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <script src="/static/js/shared/navbar.js" defer></script>
+
+    <!-- Post Content -->
+    <main>
+        <div class="post-container">
+            <h1 id="post-title"></h1>
+            <div class="post-meta">
+                <span id="post-author"></span>
+                <span id="post-timestamp"></span>
+            </div>
+            <div id="post-content"></div>
+            <div class="post-stats">
+                <span id="post-likes"><i class="fas fa-thumbs-up"></i> <span id="like-count"></span></span>
+                <span id="post-dislikes"><i class="fas fa-thumbs-down"></i> <span id="dislike-count"></span></span>
+            </div>
+            <div class="post-comments">
+                <h3>Comments (<span id="comment-count"></span>)</h3>
+                <ul id="comments-list"></ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+</body>
+<script src="/static/js/post.js" defer></script>
+</html>

@@ -7,6 +7,9 @@ from app.pages.utils import convert_objectid
 from bson import ObjectId  # To work with MongoDB's ObjectId
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
+from fastapi.staticfiles import StaticFiles
+
+
 
 app = FastAPI()
 
@@ -24,3 +27,5 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
 )
+
+app.mount("/static", StaticFiles(directory="static"), name="static")

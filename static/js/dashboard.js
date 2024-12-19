@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const postContainer = document.getElementById("post-container"); // The container where posts are displayed
     const searchForm = document.getElementById("search-form"); // The search form element
@@ -81,7 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
               })
             : "Unknown Date";
 
-        card.innerHTML = `
+        // Create an anchor tag to link to the post
+        const postLink = document.createElement("a");
+        postLink.href = `/templates/post.html?post_id=${post._id}`; // Link to the post page
+        postLink.classList.add("post-link"); // Optional: Add a class for styling
+
+        // Fill the card content inside the anchor tag
+        postLink.innerHTML = `
             <h3>${post.title}</h3>
             <p class="post-meta">By: ${post.author_name} | ${formattedDate}</p>
             <p>${post.content_snippet}</p>
@@ -91,6 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span><i class="fas fa-comments"></i> ${post.comments_count}</span>
             </div>
         `;
+
+        // Append the anchor tag to the card
+        card.appendChild(postLink);
+
         return card;
     }
 

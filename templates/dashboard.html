@@ -1,66 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/css/dashboard.css">
-</head>
-<body>
-    <div class="navbar">
-        
-        Search Bar (Centered)
-        <div class="search-bar">
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Search..." />
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
-        <div class="left-nav">
-            <nav>
-                <a href="#"><i class="fa-regular fa-pen-to-square"></i> Write</a>
-                <a href="#" id="profile-icon"><i class="fas fa-user"></i></a>
-            </nav>
-            <button class="theme-toggle" id="theme-toggle">🌙</button>
-        </div>
-    </div>
-
-    <div class="hero-section">
-        <div class="main-content">
-            <div class="tabs">
-                <button class="active" id="tab-blogs">Blogs</button>
-                <button id="tab-updates">Updates</button>
-                <button id="tab-settings">Settings</button>
-            </div>
-            
-            <hr>
-            <div id="post-container">
-                Blog cards will be dynamically inserted here
-            </div>
-        </div>
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-content">
-                <h3>Profile Info</h3>
-                <p><strong>Username:</strong> demo_user</p>
-                <p><strong>Email:</strong> demo@example.com</p>
-                <p><strong>About:</strong> This is a dummy profile for the sidebar content demonstration.</p>
-            </div>
-        </div>
-    </div>
-
-    Footer 
-    <footer>
-        <p>&copy; 2024 Blogger. All rights reserved.</p>
-    </footer>
-
-    <script src="/static/js/dashboard.js"></script>
-    <script src="/static/js/card.js"></script>
-    
-</body>
-</html> 
-    -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,17 +10,8 @@
 </head>
 <body>
     <!-- Navbar -->
-    <div class="navbar">
-        <div class="left-nav">
-            <h1>Blogger Dashboard</h1>
-        </div>
-        <div class="right-nav">
-            <nav>
-                <a href="#" id="profile-icon"><i class="fas fa-user"></i></a>
-            </nav>
-            <button class="theme-toggle" id="theme-toggle">🌙</button>
-        </div>
-    </div>
+    <div id="navbar"></div>
+    <script src="/static/js/shared/navbar.js" defer></script>
 
     <!-- Search Bar -->
     <div class="search-bar">
