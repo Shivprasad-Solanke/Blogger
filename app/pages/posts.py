@@ -7,6 +7,12 @@ from fastapi.responses import FileResponse
 import os
 from fastapi.responses import HTMLResponse
 from fastapi import Request, APIRouter
+from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from datetime import datetime, timezone
+from bson.objectid import ObjectId
+from fastapi.security import OAuth2PasswordBearer
+
 
 
 
@@ -155,3 +161,67 @@ async def get_post(post_id: str = Path(..., description="The ID of the post to r
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+
+
+
+
+# write post
+import jwt
+from fastapi import HTTPException, Depends, APIRouter
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from pydantic import BaseModel
+from datetime import datetime, timezone
+from pymongo import MongoClient
+
+# Security dependency from auth.py
+security = HTTPBearer()
+
+# Secret key for JWT decoding (use your own secret)
+SECRET_KEY = "your_secret_key_here"
+
+# MongoDB connection (assuming you have a collection for posts)
+client = MongoClient('mongodb://localhost:27017')
+db = client['blog_db']
+posts_collection = db['posts']
+
+# Post model
+class Post(BaseModel):
+    title: str
+    content: str
+    tags: list[str] = []
+
+# Router for blog posts
+posts_router = APIRouter()
+
+# Decode JWT to extract author ID
+def decode_jwt(token: str):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        return payload
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+# Create a blog post route
+@posts_router.post("/write/", status_code=201)
+async def create_post(post: Post, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    # Extract token and decode it
+    token = credentials.credentials
+    decoded_token = decode_jwt(token)
+    author_id = decoded_token.get("id")  # Ensure 'id' exists in JWT payload
+
+    if not author_id:
+        raise HTTPException(status_code=401, detail="Invalid author ID in token")
+
+    # Prepare post data for MongoDB
+    post_data = post.dict()
+    post_data["author_id"] = author_id
+    post_data["created_at"] = datetime.now(timezone.utc)
+
+    # Insert post into MongoDB
+    result = posts_collection.insert_one(post_data)
+
+    # Return the response with post details
+    return {"message": "Post created successfully!", "post_id": str(result.inserted_id)}

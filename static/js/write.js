@@ -1,99 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const themeToggle = document.getElementById("theme-toggle");
-    const root = document.documentElement;
+document.getElementById('blogForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission
 
-    // JWT Token from LocalStorage
-    const token = localStorage.getItem("access_token");
+    const title = document.getElementById('blogTitle').value;
+    const content = document.getElementById('blogContent').value;
+    const token = localStorage.getItem("access_token"); // Get the token from localStorage
+
     if (!token) {
         alert("User not authenticated. Please log in.");
         window.location.href = "/login";
         return;
     }
 
-    // Decode JWT to get the author ID
-    const authorId = parseJwt(token).id;
-    if (!authorId) {
-        alert("Failed to fetch user ID from token. Please log in again.");
-        window.location.href = "/login";
-        return;
-    }
+    // Construct the post object
+    const postData = {
+        title: title,
+        content: content
+    };
 
-    // Toggle theme functionality
-    themeToggle.addEventListener("click", () => {
-        const currentTheme = root.getAttribute("data-theme");
-        root.setAttribute("data-theme", currentTheme === "dark" ? "light" : "dark");
-        themeToggle.textContent = currentTheme === "dark" ? "🌙" : "☀️";
-    });
-
-    // Preview button functionality
-    document.getElementById("previewBtn").addEventListener("click", () => {
-        const title = document.getElementById("blogTitle").value;
-        const content = document.getElementById("blogContent").value;
-
-        // Set preview content
-        document.getElementById("previewTitle").textContent = title;
-        document.getElementById("previewContent").textContent = content;
-
-        // Display preview section
-        document.getElementById("preview").style.display = "block";
-    });
-
-    // Form submission functionality
-    document.getElementById("blogForm").addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevent default form submission
-
-        const title = document.getElementById("blogTitle").value;
-        const content = document.getElementById("blogContent").value;
-
-        // Construct the post object
-        const postData = {
-            title: title,
-            content: content,
-            author_id: authorId, // Add author_id from the JWT
-        };
-
-        // Send the data to the backend
-        try {
-            const response = await fetch("http://127.0.0.1:8000/posts/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(postData),
-            });
-
-            if (response.ok) {
-                alert("Blog post created successfully!");
-                document.getElementById("blogForm").reset(); // Reset the form
-                document.getElementById("preview").style.display = "none"; // Hide preview
-            } else {
-                const errorData = await response.json();
-                alert(`Error: ${errorData.detail || "Failed to create post."}`);
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("An unexpected error occurred. Please try again.");
+    // Send the data to the backend
+    fetch('http://127.0.0.1:8000/write/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Send the JWT token in the Authorization header
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Blog post created successfully!');
+            this.reset(); // Reset the form after publishing
+            document.getElementById('preview').style.display = 'none';
+        } else {
+            response.json().then(err => alert(`Error: ${err.detail || 'Failed to create post.'}`));
         }
-    });
-
-    // Fetch and include the footer HTML
-    fetch("/shared/footer.html")
-        .then((response) => response.text())
-        .then((data) => (document.getElementById("footer").innerHTML = data));
-
-    // Function to decode JWT and extract payload
-    function parseJwt(token) {
-        const base64Url = token.split(".")[1];
-        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-        const jsonPayload = decodeURIComponent(
-            atob(base64)
-                .split("")
-                .map((c) => {
-                    return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-                })
-                .join("")
-        );
-        return JSON.parse(jsonPayload);
-    }
+    })
+    .catch(error => console.error('Error:', error));
 });
