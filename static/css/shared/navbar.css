@@ -41,6 +41,7 @@ body {
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
+
 .navbar-right a:hover {
     color: var(--highlight-color);
     transform: scale(1.1);
