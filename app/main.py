@@ -22,7 +22,7 @@ app.include_router(router)
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5501"],  # Frontend origin
+    allow_origins=["http://127.0.0.1:5500"],  # Frontend origin
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers

@@ -4,6 +4,7 @@
     --navbar-bg: #f4f4f9;
     --navbar-text: #333;
     --br-shadow: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -101,6 +102,7 @@ main {
     background-color: var(--bg-color);
     box-shadow: 0 2px 4px var(--br-shadow);
     border-radius: 8px;
+    background-color: var(--card-bg);
     
    
 }
@@ -135,7 +137,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 1rem;
+    margin: 10px 16px 20px 10px;
 }
 
 button:hover {

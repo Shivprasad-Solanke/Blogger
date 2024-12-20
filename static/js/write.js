@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Fetch and include the footer HTML
-    fetch("/shared/footer.html")
+    fetch("/templates/shared/footer.html")
         .then((response) => response.text())
         .then((data) => (document.getElementById("footer").innerHTML = data));
 

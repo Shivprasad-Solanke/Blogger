@@ -97,4 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Call this function initially to load posts based on the current query (if any)
     handleUrlAndFetchPosts();
+
+    fetch("/templates/shared/footer.html")
+    .then((response) => response.text())
+    .then((data) => (document.getElementById("footer").innerHTML = data));
 });

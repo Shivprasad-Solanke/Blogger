@@ -4,7 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+:root{
+    --highlight-color: #f64e00;
+}
 /* Body and Navbar Styles */
 body {
     font-family: 'Arial', sans-serif;
@@ -38,12 +40,22 @@ a {
     gap: 1.5rem;
 }
 
+.btn{
+    background-color: #f64e00;
+    padding: 7px;
+    border-radius: 10px;
+    color: #ffffff;
+    margin-right: 15px;
+    font-size: 15px;
+}
+
 .navbar-right a {
     color: var(--navbar-text);
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
 }
+
 
 .navbar-right a:hover {
     color: var(--highlight-color);
