@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/css/profile.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar"></div>
+    <script src="/static/js/shared/navbar.js" defer></script>
+    <div class="container">
+        <header class="profile-header">
+            <h1>Your Profile</h1>
+        </header>
+        <main class="profile-content">
+            <div class="user-details">
+                <p><strong>Name:</strong> <span id="user-name">Loading...</span></p>
+                <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+                <p><strong>Posts Written:</strong> <span id="user-posts-count">Loading...</span></p>
+            </div>
+            <div class="edit-name">
+                <h3>Update Your Name</h3>
+                <input type="text" id="new-name" placeholder="Enter new name">
+                <button id="update-name-btn">Update</button>
+            </div>
+        </main>
+    </div>
+    <script src="/static/js/profile.js"></script>
+</body>
+</html>
