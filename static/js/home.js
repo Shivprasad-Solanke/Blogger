@@ -70,8 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         postLink.innerHTML = `
             <div class="card-header">${post.title}</div>
             <div class="card-details">
-                <div class="card-subtitle">By: ${post.author_name}</div>
-                <div class="card-timestamp">${formattedDate}</div>
+                <div class="card-subtitle">By: ${post.author_name} | ${formattedDate}</div>
             </div>
             <div class="card-content">${post.content_snippet}</div>
             <div class="card-icons">

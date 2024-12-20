@@ -68,14 +68,19 @@ a {
     align-items: center;
     background-color: var(--navbar-bg);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
 }
 
 #profile-icon i {
     color: var(--navbar-text);
+    font-size: 1.5rem;
 }
+
+#profile-icon i:hover{
+   color: var(--highlight-color);
+} 
 
 #user-sidebar {
     position: absolute;

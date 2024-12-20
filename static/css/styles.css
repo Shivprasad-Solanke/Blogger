@@ -7,13 +7,19 @@ body {
     height: 100vh;
     margin: 0;
 }
+#navbar {
+    all: unset;
+    display: block; /* Restore default styles */
+}
+
+
 
 .form-container {
     background: #fff;
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 400px;
 }
 
 h1 {

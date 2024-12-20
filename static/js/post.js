@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 (comment) => `
             <li>
                 <p>${comment.content.replace(/\n/g, "<br>")}</p>
-                <p>By: ${comment.user_name}</p>
+                <p id="user">By: ${comment.user_name}</p>
             </li>`
             )
             .join("");
