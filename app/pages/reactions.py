@@ -304,3 +304,30 @@ async def remove_dislike(dislike_request: DislikeRequest):
         raise HTTPException(status_code=404, detail="Dislike not found.")
 
     return {"message": "Dislike removed successfully."}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@reactions_router.get("/posts/{post_id}/reactions")
+async def get_reactions(post_id: str, user_id: str):
+    try:
+        post_id = ObjectId(post_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid post_id format.")
+
+    has_liked = await likes_collection.find_one({"post_id": post_id, "user_id": user_id}) is not None
+    has_disliked = await dislikes_collection.find_one({"post_id": post_id, "user_id": user_id}) is not None
+
+    return {"hasLiked": has_liked, "hasDisliked": has_disliked}
