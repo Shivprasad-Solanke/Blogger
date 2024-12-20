@@ -4,7 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+:root{
+    --highlight-color: #f64e00;
+}
 /* Body and Navbar Styles */
 body {
     font-family: 'Arial', sans-serif;
@@ -21,6 +23,10 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+a {
+    text-decoration: none;
+}
+
 .navbar h1 {
     font-size: 2rem;
     color: var(--navbar-text);
@@ -32,6 +38,15 @@ body {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+}
+
+.btn{
+    background-color: #f64e00;
+    padding: 7px;
+    border-radius: 10px;
+    color: #ffffff;
+    margin-right: 15px;
+    font-size: 15px;
 }
 
 .navbar-right a {

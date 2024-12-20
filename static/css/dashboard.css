@@ -21,11 +21,22 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    min-height: 100vh;
-    height: 100%;
+    min-height: 100vh; /* Ensure the body covers the full viewport height */
     margin: 0;
     display: flex;
     flex-direction: column;
+}
+
+/* Main content */
+.main-content {
+    display: flex;
+    flex-direction: column; /* Stack the elements vertically */
+    align-items: center; /* Center the content */
+    margin: 2rem auto;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    flex: 1; /* Allow main content to grow and push the footer down */
 }
 
 
@@ -50,19 +61,12 @@ body {
     cursor: pointer;
 }
 
-.main-content {
-    display: flex;
-    flex-direction: column; /* Stack the elements vertically */
-    align-items: center; /* Center the content */
-    margin: 2rem auto;
-    gap: 2rem;
-    max-width: 1200px;
-}
+
 
 h2 {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--highlight-color);
+    color: #000000;
     text-align: center;
     margin-bottom: 1rem; /* Adds space between the heading and the cards */
 }
@@ -78,38 +82,18 @@ h2 {
     flex: 3;
 }
 
-/* Sidebar styles */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Initially hidden off-screen */
-    width: 250px;
-    height: 100%;
-    background-color: var(--card-bg);
-    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
-    z-index: 1000;
-    padding: 1rem;
-}
-
-/* Active state: Slide the sidebar into view */
-.sidebar.active {
-    right: 0;
-}
-
-/* Prevent layout shift when sidebar is open */
-body.sidebar-active {
-    overflow: hidden; /* Optional: Prevent scrolling */
-}
 
 
-/* Home Page Card Layout */
-.blog-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create a responsive grid */
-    gap: 2rem;
-    width: 100%;
-    padding: 1rem;
+
+
+#post-container {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        text-decoration: none;
+        width: 70%;
 }
 
 /* Post Card Styles */
@@ -123,6 +107,8 @@ body.sidebar-active {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 20px;
 }
 .post-card a{
     text-decoration: none;
@@ -136,7 +122,7 @@ body.sidebar-active {
 .post-card h3 {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--highlight-color);
+    color:#000000;
     margin-bottom: 0.5rem;
 }
 
@@ -164,6 +150,7 @@ body.sidebar-active {
     margin-right: 5px;
 }
 
+/* Footer styles */
 footer {
     background: var(--footer-bg);
     color: var(--text-color);
@@ -171,5 +158,8 @@ footer {
     padding: 1rem 0;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
+    position: relative; /* Ensures proper stacking above content */
+    bottom: 0;
+    margin-top: auto; /* Pushes footer to the bottom if content is short */
 }
 

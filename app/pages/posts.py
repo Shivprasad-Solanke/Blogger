@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Query, Path
+from fastapi import APIRouter, HTTPException, Query, Path, Depends, Header
 from app.database import posts_collection, comments_collection, likes_collection, dislikes_collection, users_collection
 from app.models import Post, Comment, LikeRequest, DislikeRequest
 from bson import ObjectId
@@ -7,6 +7,9 @@ from fastapi.responses import FileResponse
 import os
 from fastapi.responses import HTMLResponse
 from fastapi import Request, APIRouter
+from fastapi.security import OAuth2PasswordBearer
+from datetime import datetime, timezone
+from jose import jwt, JWTError
 
 
 
@@ -54,7 +57,7 @@ async def get_posts_details(filter_query=None):
     if filter_query:
         posts = await posts_collection.find(filter_query).to_list(length=10)
     else:
-        posts = await posts_collection.find().to_list(length=10)
+        posts = await posts_collection.find().to_list(length=100)
 
     posts = convert_objectid(posts)  # Ensure all ObjectId fields are converted
     post_details_list = []
@@ -155,3 +158,20 @@ async def get_post(post_id: str = Path(..., description="The ID of the post to r
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
+  
+
+# Route to create a new post
+@posts_router.post("/write")
+async def create_post(post: Post):
+    
+    # Prepare the post data
+    post_data = post.dict()
+    post_data["created_at"] = datetime.now(timezone.utc)
+
+    # Insert the post into the database
+    await posts_collection.insert_one(post_data)
+
+    return {"message": "Post created successfully!"}
