@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --bg-color: #f4f4f9;
     --text-color: #333;
     --navbar-bg: #f4f4f9;
@@ -49,23 +49,66 @@ h1 {
 
 .post-stats {
     display: flex;
-    gap: 1.5rem;
-    font-size: 0.9rem;
+    gap: 2rem;
+    align-items: center;
+    font-size: 2rem;
     margin-bottom: 2rem;
 }
 
-.post-stats span {
+.post-stats button {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    background: none;
+    border: none;
     cursor: pointer;
-    color: #666;
+    padding: 0;
+    gap: 0.5rem;
+    color: #666; 
+    transition: color 0.3s ease;
 }
 
-.post-stats span i {
-    font-size: 1.2rem;
-    color: #ea0000;
+.post-stats button:hover {
+    color: #f64e00; 
 }
+
+.post-stats button span {
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.post-stats i {
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.post-stats .fa-regular {
+    color: #999;
+}
+
+.post-stats .fa-solid {
+    color: #ea0000; 
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+button.active {
+    color: #f64e00; 
+}
+
+button.active .fa-solid {
+    color: #f64e00; 
+    transform: scale(1.1); 
+}
+
+button:focus {
+    outline: none;
+}
+
 
 .post-comments h3 {
     font-size: 1.2rem;
@@ -102,7 +145,7 @@ h1 {
     width: 100%;
     height: 40px;
 
-    /* max-width: 1000px; */
+    
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -135,99 +178,272 @@ h1 {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+ */
+ :root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --navbar-bg: #f4f4f9;
+    --navbar-text: #333;
+    --card-bg: #ffffff;
+}
 
+.merriweather-light {
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .merriweather-regular {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .merriweather-bold {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .merriweather-black {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .merriweather-light-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .merriweather-regular-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .merriweather-bold-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .merriweather-black-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: italic;
+  }
 
-/* body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+  .roboto-serif-heading {
+    font-family: "Roboto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 700; /* Bold for headings */
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "GRAD" 0;
+  }
+  
+  .roboto-serif-subheading {
+    font-family: "Roboto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 500; /* Medium weight for subheadings */
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "GRAD" 0;
+  }
+  
+  .roboto-serif-body {
+    font-family: "Roboto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Regular for body text */
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "GRAD" 0;
+  }
+  
+
+body {
+    font-family: "Merriweather", serif; /* Default to Merriweather for content */
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
-.blog-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto Serif", serif; /* Roboto Serif for headings */
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+a:hover {
+    color: #f64e00; /* Add a hover effect for links */
+}
+
+/* Post Container */
+.post-container {
+    width: 50%;
+    margin: 2.5rem auto;
+    background: var(--card-bg);
+    padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Post Heading */
 h1 {
-    margin-bottom: 10px;
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
 }
 
+/* Post Meta Information */
 .post-meta {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
     color: #555;
+    margin-bottom: 1rem;
 }
 
-p {
-    color: #555;
+/* Post Content */
+#post-content {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
 }
 
-.interactions {
-    margin-top: 20px;
+/* Post Stats */
+.post-stats {
     display: flex;
-    gap: 10px;
+    gap: 2rem;
     align-items: center;
-    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-.likes-dislikes button,
-#comment-btn {
-    background: #f0f0f0;
+.post-stats button {
+    display: flex;
+    align-items: center;
+    background: none;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    padding: 0;
+    gap: 0.5rem;
+    color: #666;
+    transition: color 0.3s ease;
 }
 
-.likes-dislikes button:hover,
-#comment-btn:hover {
-    background: #ddd;
+.post-stats button:hover {
+    color: #f64e00;
 }
 
+.post-stats button span {
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.post-stats i {
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.post-stats .fa-regular {
+    color: #999;
+}
+
+.post-stats .fa-solid {
+    color: #ea0000;
+}
+
+/* Hide elements with the 'hidden' class */
 .hidden {
     display: none;
 }
 
-#comments-section {
-    margin-top: 20px;
+/* Highlight active buttons */
+button.active {
+    color: #f64e00;
+}
+
+button.active .fa-solid {
+    color: #f64e00;
+    transform: scale(1.1);
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Post Comments Section */
+.post-comments h3 {
+    font-size: 1.5rem;
+    font-family: "Roboto Serif", serif;
+    margin-bottom: 1rem;
 }
 
 #comments-list {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 
 #comments-list li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    background: #f9f9f9;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    font-family: "Merriweather", serif;
+}
+
+.comment-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 #new-comment {
     width: 100%;
+    height: 40px;
     padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none;
+}
+
+#new-comment:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    font-family: "Merriweather", serif;
 }
 
 #submit-comment {
-    margin-top: 10px;
     padding: 10px 20px;
-    background: #007bff;
+    background-color: #f64e00;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
+    font-family: "Roboto Serif", serif;
 }
 
 #submit-comment:hover {
-    background: #0056b3;
-} */
+    background-color: #458ba0;
+}
+
+#submit-comment:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+

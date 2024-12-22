@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --bg-color: #f4f4f9;
     --text-color: #333;
     --navbar-bg: #f4f4f9;
@@ -175,4 +175,179 @@ button:hover {
 .preview p {
     font-size: 1rem;
     color: #555;
+} */
+
+
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --navbar-bg: #f4f4f9;
+    --navbar-text: #333;
+    --input-bg: #ffffff;
+    --button-color: #f64e00;
+    --button-hover: #458ba0;
+    --br-shadow: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+}
+
+
+
+
+
+.merriweather-light {
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .merriweather-regular {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .merriweather-bold {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .merriweather-black {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .merriweather-light-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .merriweather-regular-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .merriweather-bold-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .merriweather-black-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  .roboto-serif-heading {
+    font-family: "Roboto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 700; /* Bold for headings */
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "GRAD" 0;
+  }
+  
+  .roboto-serif-subheading {
+    font-family: "Roboto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 500; /* Medium weight for subheadings */
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "GRAD" 0;
+  }
+  
+  .roboto-serif-body {
+    font-family: "Roboto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Regular for body text */
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "GRAD" 0;
+  }
+
+
+[data-theme="dark"] {
+    --bg-color: #181818;
+    --text-color: #f4f4f9;
+    --navbar-bg: #000;
+    --navbar-text: #fff;
+    --input-bg: rgba(128, 128, 128, 0.163);
+    --br-shadow: rgba(255, 255, 255, 0.444);
+    --button-color: #ff7b00;
+    --button-hover: #ff9966;
+}
+
+body {
+    margin: 0;
+    font-family: 'Merriweather', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.editor-container {
+    width: 60%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px var(--br-shadow);
+    border-radius: 8px;
+}
+
+.editor-container h1 {
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.editor input,
+.editor textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    font-family: 'Merriweather', sans-serif;
+}
+
+.editor-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+.preview {
+    padding: 1rem;
+    background: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--br-shadow);
+}
+
+.preview h3 {
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.preview p {
+    font-family: 'Merriweather', sans-serif;
+    font-size: 1rem;
+    color: var(--text-color);
 }

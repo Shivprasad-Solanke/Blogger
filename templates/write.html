@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create a Blog - Medium Style</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300;1,400&family=Roboto+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/write.css">
 </head>
 <body>
@@ -14,38 +23,61 @@
 
     <main>
         <div class="editor-container">
-            <h1>Create Your Blog Post</h1>
+            <h1 class="roboto-serif-heading">Create Your Blog Post</h1>
             <form id="blogForm">
                 <div class="editor">
                     <!-- Title Input -->
-                    <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
-                    
+                    <input
+                        type="text"
+                        id="blogTitle"
+                        name="title"
+                        class="merriweather-input"
+                        placeholder="Enter your blog title"
+                        required
+                    />
+
                     <!-- Content Textarea -->
-                    <textarea id="blogContent" name="content" placeholder="Write your blog content here..." required rows="10"></textarea>
-                    
+                    <textarea
+                        id="blogContent"
+                        name="content"
+                        class="merriweather-input"
+                        placeholder="Write your blog content here..."
+                        required
+                        rows="10"
+                    ></textarea>
+
                     <!-- Tags Input -->
-                    <input type="text" id="blogTags" name="tags" placeholder="Enter tags, separated by commas" />
+                    <input
+                        type="text"
+                        id="blogTags"
+                        name="tags"
+                        class="merriweather-input"
+                        placeholder="Enter tags, separated by commas"
+                    />
 
                     <!-- Preview and Publish Buttons -->
-                    <button type="button" id="previewBtn">Preview</button>
-                    <button type="submit" id="publishBtn">Publish</button>
+                    <div class="editor-buttons">
+                        <button type="button" id="previewBtn">Preview</button>
+                        <button type="submit" id="publishBtn">Publish</button>
+                    </div>
                 </div>
             </form>
-            
-            <h2>Blog Preview</h2>
+
+            <!-- Blog Preview -->
+            <h2 class="roboto-serif-subheading">Blog Preview</h2>
             <div id="preview" class="preview">
-                <!-- Blog Preview Content -->
                 <div class="text">
-                    <h3 id="previewTitle"></h3>
-                    <p id="previewContent"></p>
-                    <p id="previewTags"></p>
+                    <h3 id="previewTitle" class="roboto-serif-heading"></h3>
+                    <p id="previewContent" class="merriweather-text"></p>
+                    <p id="previewTags" class="merriweather-text"></p>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <div id="footer"></div>
-
-    <script src="/static/js/write.js"></script>
+    <script src="/static/js/shared/footer.js" defer></script>
+    <script src="/static/js/write.js" defer></script>
 </body>
 </html>

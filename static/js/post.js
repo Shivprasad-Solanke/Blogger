@@ -548,7 +548,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userId = parseJwt(token).id;
     if (!userId) {
         alert("Failed to fetch user ID from token. Please log in again.");
-        window.location.href = "/login";
+        window.location.href = "/templates/login.html";
         return;
     }
 
@@ -584,7 +584,8 @@ document.addEventListener("DOMContentLoaded", () => {
         likeCountSpan.textContent = post.likes_count;
         dislikeCountSpan.textContent = post.dislikes_count;
         commentCountSpan.textContent = post.comments_count;
-
+        const likeButton = document.getElementById("like-button");
+        const dislikeButton = document.getElementById("dislike-button");
         commentsList.innerHTML = post.comments
             .map(
                 (comment) => `
@@ -662,24 +663,31 @@ document.addEventListener("DOMContentLoaded", () => {
         return JSON.parse(jsonPayload);
     }
 
-    // Update button styles based on reaction state
     function updateReactionButtons() {
+        const likeIconRegular = likeButton.querySelector(".fa-regular.like");
+        const likeIconSolid = likeButton.querySelector(".fa-solid.liked");
+        const dislikeIconRegular = dislikeButton.querySelector(".fa-regular.dislike");
+        const dislikeIconSolid = dislikeButton.querySelector(".fa-solid.disliked");
+    
+        // Toggle visibility for like icons
         if (hasLiked) {
-            likeButton.textContent = "Liked";
-            likeButton.classList.add("active");
+            likeIconRegular.classList.add("hidden");
+            likeIconSolid.classList.remove("hidden");
         } else {
-            likeButton.textContent = "Like";
-            likeButton.classList.remove("active");
+            likeIconRegular.classList.remove("hidden");
+            likeIconSolid.classList.add("hidden");
         }
-
+    
+        // Toggle visibility for dislike icons
         if (hasDisliked) {
-            dislikeButton.textContent = "Disliked";
-            dislikeButton.classList.add("active");
+            dislikeIconRegular.classList.add("hidden");
+            dislikeIconSolid.classList.remove("hidden");
         } else {
-            dislikeButton.textContent = "Dislike";
-            dislikeButton.classList.remove("active");
+            dislikeIconRegular.classList.remove("hidden");
+            dislikeIconSolid.classList.add("hidden");
         }
     }
+    
 
     // Toggle like functionality
     function toggleLike(postId, userId) {

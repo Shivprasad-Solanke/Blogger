@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("access_token");
     if (!token) {
         alert("User not authenticated. Please log in.");
-        window.location.href = "/login";
+        window.location.href = "/templates/login.html";
         return;
     }
 
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userId = parseJwt(token).id;
     if (!userId) {
         alert("Failed to fetch user ID from token. Please log in again.");
-        window.location.href = "/login";
+        window.location.href = "/templates/login.html";
         return;
     }
 
