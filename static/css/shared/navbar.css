@@ -32,13 +32,32 @@ a {
     color: var(--navbar-text);
     font-weight: bold;
     margin-right: auto;
+    transition: color 0.4s ease
+}
+.navbar h1:hover{
+    color: var(--highlight-color);
 }
 
-.navbar-right {
+#navbar-right {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem; /* Ensures 1rem gap between items */
 }
+#navbar-right a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--navbar-text);
+    transition: color 0.3s ease, transform 0.2s ease;
+
+}
+
+.fa-pen-to-square{
+    margin-right: 0.7rem;
+}
+
+
 
 .btn{
     background-color: #f64e00;
@@ -49,7 +68,7 @@ a {
     font-size: 15px;
 }
 
-.navbar-right a {
+#navbar-right a {
     color: var(--navbar-text);
     font-weight: 500;
     text-decoration: none;
@@ -57,7 +76,7 @@ a {
 }
 
 
-.navbar-right a:hover {
+#navbar-right a:hover {
     color: var(--highlight-color);
     transform: scale(1.1);
 }
@@ -117,6 +136,9 @@ a {
     display: block;
     transition: background-color 0.3s ease;
 }
+#user-sidebar a i{
+    margin-right: 1rem;
+}
 
 #user-sidebar a:hover {
     background-color: var(--highlight-color);
@@ -145,4 +167,5 @@ a {
         display: none;
     }
 }
+
 

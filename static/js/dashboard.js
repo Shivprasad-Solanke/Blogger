@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const postContainer = document.getElementById("post-container"); // The container where posts are displayed
     const searchForm = document.getElementById("search-form"); // The search form element
@@ -69,25 +68,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Create a post card element
     function createPostCard(post) {
         const card = document.createElement("div");
         card.classList.add("post-card");
-
+    
         const formattedDate = post.created_at
             ? new Date(post.created_at).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "short",
-                  day: "numeric"
+                  day: "numeric",
               })
             : "Unknown Date";
-
-        // Create an anchor tag to link to the post
+    
+        // Create the main content of the card
         const postLink = document.createElement("a");
-        postLink.href = `/templates/post.html?post_id=${post._id}`; // Link to the post page
-        postLink.classList.add("post-link"); // Optional: Add a class for styling
-
-        // Fill the card content inside the anchor tag
+        postLink.href = `/templates/post.html?post_id=${post._id}`;
+        postLink.classList.add("post-link");
         postLink.innerHTML = `
             <h3>${post.title}</h3>
             <p class="post-meta">By: ${post.author_name} | ${formattedDate}</p>
@@ -98,12 +94,75 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span><i class="fas fa-comments"></i> ${post.comments_count}</span>
             </div>
         `;
+    
+        // Create menu for options
+        const menuContainer = document.createElement("div");
+        menuContainer.classList.add("menu-container");
+        menuContainer.innerHTML = `
+            <div class="menu-icon">
+                <i class="fas fa-ellipsis-v"></i>
+            </div>
+            <div class="menu-options hidden">
+                <button class="menu-option update">Update</button>
+                <button class="menu-option delete">Delete</button>
+            </div>
+        `;
+    
+//         // Attach event listeners
+//         const menuIcon = menuContainer.querySelector(".menu-icon");
+//         const menuOptions = menuContainer.querySelector(".menu-options");
+    
+//         // Toggle the menu visibility when the icon is clicked
+//         menuIcon.addEventListener("click", (event) => {
+//             event.stopPropagation(); // Prevent event bubbling
+//             menuOptions.classList.toggle("hidden");
+//         });
+    
+//         // Close menu when clicking outside
+//         document.addEventListener("click", () => {
+//             menuOptions.classList.add("hidden");
+//         });
+    
+//         // Prevent menu from closing when clicking inside it
+//         menuOptions.addEventListener("click", (event) => {
+//             event.stopPropagation();
+//         });
+    
+//        // DELETE button functionality
+// menuContainer.querySelector(".delete").addEventListener("click", async () => {
+//     const confirmation = confirm("Are you sure you want to delete this post?");
+//     if (confirmation) {
+//         try {
+//             // DELETE request to the FastAPI backend
+//             const response = await fetch(`http://127.0.0.1:8000/posts/${post._id}`, {
+//                 method: "DELETE",
+//                 headers: {
+//                     "Content-Type": "application/json", // Optional if sending JSON body
+//                 },
+//             });
 
-        // Append the anchor tag to the card
+//             if (response.ok) {
+//                 alert("Post deleted successfully!");
+//                 card.remove(); // Remove the card from the DOM
+//             } else {
+//                 const errorData = await response.json(); // Parse the response body
+//                 alert(`Failed to delete the post: ${errorData.detail || response.statusText}`);
+//             }
+//         } catch (error) {
+//             console.error("Error deleting post:", error);
+//             alert("An error occurred while deleting the post. Please try again later.");
+//         }
+//     }
+// });
+
+        // Append the elements to the card
         card.appendChild(postLink);
-
+        // card.appendChild(menuContainer);
+    
         return card;
     }
+    
+    
 
     // Parse JWT to extract payload
     function parseJwt(token) {

@@ -10,11 +10,43 @@ from fastapi import Request, APIRouter
 from fastapi.security import OAuth2PasswordBearer
 from datetime import datetime, timezone
 from jose import jwt, JWTError
+from fastapi import Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
+from app.models import User
+
+from fastapi import Request, APIRouter
+from fastapi.responses import JSONResponse
 
 
 
 
+
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 posts_router = APIRouter()
+
+
+
+@posts_router.middleware("http")
+async def add_authorization_header(request: Request, call_next):
+    # Skip authentication check for delete post route
+    if request.url.path.startswith("/posts/"):
+        if request.method == "DELETE":
+            # No authorization check needed for delete route
+            return await call_next(request)
+    
+    # Perform the authorization check for all other routes
+    token = request.headers.get("Authorization")
+    if not token:
+        return JSONResponse(status_code=401, content={"detail": "Not authorized"})
+    
+    response = await call_next(request)
+    return response
+
+
+
+
+
 
 # # Helper function to get post details with likes, dislikes, and comments
 # async def get_posts_details(filter_query=None):
@@ -175,3 +207,6 @@ async def create_post(post: Post):
     await posts_collection.insert_one(post_data)
 
     return {"message": "Post created successfully!"}
+
+
+

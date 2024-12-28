@@ -1,3 +1,11 @@
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --navbar-bg: #f4f4f9;
+    --navbar-text: #333;
+    --card-bg: #ffffff;
+    
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
