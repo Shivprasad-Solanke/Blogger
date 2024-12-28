@@ -108,56 +108,56 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
     
-//         // Attach event listeners
-//         const menuIcon = menuContainer.querySelector(".menu-icon");
-//         const menuOptions = menuContainer.querySelector(".menu-options");
+        // Attach event listeners
+        const menuIcon = menuContainer.querySelector(".menu-icon");
+        const menuOptions = menuContainer.querySelector(".menu-options");
     
-//         // Toggle the menu visibility when the icon is clicked
-//         menuIcon.addEventListener("click", (event) => {
-//             event.stopPropagation(); // Prevent event bubbling
-//             menuOptions.classList.toggle("hidden");
-//         });
+        // Toggle the menu visibility when the icon is clicked
+        menuIcon.addEventListener("click", (event) => {
+            event.stopPropagation(); // Prevent event bubbling
+            menuOptions.classList.toggle("hidden");
+        });
     
-//         // Close menu when clicking outside
-//         document.addEventListener("click", () => {
-//             menuOptions.classList.add("hidden");
-//         });
+        // Close menu when clicking outside
+        document.addEventListener("click", () => {
+            menuOptions.classList.add("hidden");
+        });
     
-//         // Prevent menu from closing when clicking inside it
-//         menuOptions.addEventListener("click", (event) => {
-//             event.stopPropagation();
-//         });
+        // Prevent menu from closing when clicking inside it
+        menuOptions.addEventListener("click", (event) => {
+            event.stopPropagation();
+        });
     
-//        // DELETE button functionality
-// menuContainer.querySelector(".delete").addEventListener("click", async () => {
-//     const confirmation = confirm("Are you sure you want to delete this post?");
-//     if (confirmation) {
-//         try {
-//             // DELETE request to the FastAPI backend
-//             const response = await fetch(`http://127.0.0.1:8000/posts/${post._id}`, {
-//                 method: "DELETE",
-//                 headers: {
-//                     "Content-Type": "application/json", // Optional if sending JSON body
-//                 },
-//             });
+       // DELETE button functionality
+menuContainer.querySelector(".delete").addEventListener("click", async () => {
+    const confirmation = confirm("Are you sure you want to delete this post?");
+    if (confirmation) {
+        try {
+            // DELETE request to the FastAPI backend
+            const response = await fetch(`http://127.0.0.1:8000/posts/${post._id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json", // Optional if sending JSON body
+                },
+            });
 
-//             if (response.ok) {
-//                 alert("Post deleted successfully!");
-//                 card.remove(); // Remove the card from the DOM
-//             } else {
-//                 const errorData = await response.json(); // Parse the response body
-//                 alert(`Failed to delete the post: ${errorData.detail || response.statusText}`);
-//             }
-//         } catch (error) {
-//             console.error("Error deleting post:", error);
-//             alert("An error occurred while deleting the post. Please try again later.");
-//         }
-//     }
-// });
+            if (response.ok) {
+                alert("Post deleted successfully!");
+                card.remove(); // Remove the card from the DOM
+            } else {
+                const errorData = await response.json(); // Parse the response body
+                alert(`Failed to delete the post: ${errorData.detail || response.statusText}`);
+            }
+        } catch (error) {
+            console.error("Error deleting post:", error);
+            alert("An error occurred while deleting the post. Please try again later.");
+        }
+    }
+});
 
         // Append the elements to the card
         card.appendChild(postLink);
-        // card.appendChild(menuContainer);
+        card.appendChild(menuContainer);
     
         return card;
     }
