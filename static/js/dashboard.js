@@ -103,8 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i class="fas fa-ellipsis-v"></i>
             </div>
             <div class="menu-options hidden">
-                <button class="menu-option update">Update</button>
-                <button class="menu-option delete">Delete</button>
+                <button class="menu-option update"><i class="fa-solid fa-pen"></i>Update</button>
+                <button class="menu-option delete"><i class="fa-solid fa-trash"></i>Delete</button>
             </div>
         `;
     

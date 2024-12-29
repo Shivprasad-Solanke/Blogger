@@ -141,9 +141,9 @@ h2 {
 
 .post-stats {
     display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: #555;
+    gap: 4rem;
 }
 
 .post-stats span i {
@@ -182,7 +182,7 @@ footer {
 
 .menu-icon {
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #555;
 }
 
@@ -213,7 +213,7 @@ footer {
     border: none;
     background: none;
     text-align: left;
-    width: 100%;
+    width: 7rem;
 }
 
 .menu-option:hover {
@@ -222,6 +222,12 @@ footer {
 }
 .hidden {
     display: none;
+}
+
+.fa-solid{
+    margin-right: 1rem;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 
