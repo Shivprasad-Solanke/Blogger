@@ -4,6 +4,10 @@
     --navbar-bg: #f4f4f9;
     --navbar-text: #333;
     --card-bg: #ffffff;
+    --hover-color: #f64e00;
+    --footer-bg: #3c3c3e48;
+    --footer-text-color: #fdf5f5;
+    --navbar-bg: #ffffff;
 }
 
 body {
@@ -11,62 +15,86 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
 }
+
+h1,
+h2,
+h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
 .search-bar {
-    padding: 1rem;
+    margin-top: 2rem;
     text-align: center;
 }
 
 .search-bar input {
-    width: 60%;
-    padding: 0.5rem;
-    border-radius: 5px;
+    width: 70%;
+    padding: 1rem;
+    border-radius: 25px;
     border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    border: none;
+    outline: none;
+}
+
+.search-bar input:focus {
+    border: 2px solid var(--hover-color);
 }
 
 .search-bar button {
-    background: #ffffff;
-    color: var(--navbar-text);
+    padding: 1rem;
+    background: var(--hover-color);
+    color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    margin-left: -3rem;
+    font-size: 1rem;
 }
 
-
+.search-bar button:hover {
+    background: var(--text-color);
+}
 
 main {
-    flex: 1; /* Allow the main content to grow and push the footer down */
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
+    margin-top: 1rem;
 }
 
 .blog-container {
-    width: 70%;
-    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    text-decoration: none;
+    flex-direction: column; /* Stack cards vertically */
+    gap: 1rem; /* Space between the cards */
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 55vh;
 }
 
 .card {
+    width: 100%; /* Make each card take full width */
+    height: auto; /* Allow cards to resize dynamically */
     background: var(--card-bg);
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
     padding: 1rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card a{
+
+.card a {
     text-decoration: none;
     color: var(--text-color);
 }
+
 .card-header {
     font-size: 1.25rem;
     font-weight: bold;
@@ -94,7 +122,7 @@ main {
     font-size: 0.8rem;
     text-align: right;
 }
-.card:hover{
-    transform: translateY(-10px);
+
+.card:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }

@@ -199,4 +199,8 @@ menuContainer.querySelector(".delete").addEventListener("click", async () => {
 
     // Handle browser navigation events (e.g., back/forward)
     window.addEventListener("popstate", handleInitialFetch);
+
+    fetch("/templates/shared/footer.html")
+    .then((response) => response.text())
+    .then((data) => (document.getElementById("footer").innerHTML = data));
 });

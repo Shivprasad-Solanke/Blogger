@@ -4,9 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-:root{
-    --highlight-color: #f64e00;
-}
+
 /* Body and Navbar Styles */
 body {
     font-family: 'Arial', sans-serif;
@@ -21,6 +19,7 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 5rem;
 }
 
 a {
@@ -34,8 +33,12 @@ a {
     margin-right: auto;
     transition: color 0.4s ease
 }
+
+.name{
+    color: var(--navbar-text);
+}
 .navbar h1:hover{
-    color: var(--highlight-color);
+    color: var(--hover-color);
 }
 
 #navbar-right {
@@ -48,7 +51,7 @@ a {
     align-items: center;
     text-decoration: none;
     font-size: 1rem;
-    color: var(--navbar-text);
+    /* color: var(--navbar-text); */
     transition: color 0.3s ease, transform 0.2s ease;
 
 }
@@ -68,19 +71,24 @@ a {
     font-size: 15px;
 }
 
+
 #navbar-right a {
-    color: var(--navbar-text);
+    /* color: var(--navbar-text); */
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.2s ease;
+    color: var(--text-color);
 }
 
 
 #navbar-right a:hover {
-    color: var(--highlight-color);
+    color: var(--hover-color);
     transform: scale(1.1);
 }
 
+#navbar-right .btn:hover{
+    color: #ffffff;
+}
 #profile-icon {
     display: flex;
     justify-content: center;
@@ -98,7 +106,7 @@ a {
 }
 
 #profile-icon i:hover{
-   color: var(--highlight-color);
+   color: var(--hover-color);
 } 
 
 #user-sidebar {
@@ -141,7 +149,7 @@ a {
 }
 
 #user-sidebar a:hover {
-    background-color: var(--highlight-color);
+    background-color: var(--hover-color);
     color: var(--navbar-bg);
 }
 

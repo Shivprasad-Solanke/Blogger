@@ -13,76 +13,13 @@ from jose import jwt, JWTError
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from app.models import User
-
 from fastapi import Request, APIRouter
 from fastapi.responses import JSONResponse
-
-
-
-
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 posts_router = APIRouter()
 
-
-
-@posts_router.middleware("http")
-async def add_authorization_header(request: Request, call_next):
-    # Skip authentication check for delete post route
-    if request.url.path.startswith("/posts/"):
-        if request.method == "DELETE":
-            # No authorization check needed for delete route
-            return await call_next(request)
-    
-    # Perform the authorization check for all other routes
-    token = request.headers.get("Authorization")
-    if not token:
-        return JSONResponse(status_code=401, content={"detail": "Not authorized"})
-    
-    response = await call_next(request)
-    return response
-
-
-
-
-
-
-# # Helper function to get post details with likes, dislikes, and comments
-# async def get_posts_details(filter_query=None):
-#     if filter_query:
-#         posts = await posts_collection.find(filter_query).to_list(length=10)
-#     else:
-#         posts = await posts_collection.find().to_list(length=10)
-
-#     posts = convert_objectid(posts)
-#     post_details_list = []
-
-#     for post in posts:
-#         author = await users_collection.find_one({"_id": ObjectId(post["author_id"])})
-#         if not author:
-#             raise HTTPException(status_code=404, detail=f"Author with id {post['author_id']} not found")
-
-#         likes_count = await likes_collection.count_documents({"post_id": ObjectId(post["_id"])})
-#         dislikes_count = await dislikes_collection.count_documents({"post_id": ObjectId(post["_id"])})
-#         comments_count = await comments_collection.count_documents({"post_id": ObjectId(post["_id"])})
-#         comments = await comments_collection.find({"post_id": ObjectId(post["_id"])}).to_list(length=10)
-#         comments = convert_objectid(comments)
-
-#         post_details = {
-#             "title": post["title"],
-#             "content_snippet": post["content"][:150],  # First 150 characters of content
-#             "author_name": author["name"],
-#             "created_at": post["created_at"],
-#             "likes_count": likes_count,
-#             "dislikes_count": dislikes_count,
-#             "comments_count": comments_count,
-#             "comments": comments
-#         }
-
-#         post_details_list.append(post_details)
-
-#     return post_details_list
 
 # Helper function to get post details with likes, dislikes, and comments
 async def get_posts_details(filter_query=None):
@@ -208,5 +145,28 @@ async def create_post(post: Post):
 
     return {"message": "Post created successfully!"}
 
+
+@posts_router.delete("/posts/{post_id}")
+async def delete(post_id: str = Path(..., description="The ID of the post to delete")):
+    try:
+        # Convert post_id to ObjectId
+        post_object_id = ObjectId(post_id)
+
+        # Check if the post exists
+        post = await posts_collection.find_one({"_id": post_object_id})
+        if not post:
+            raise HTTPException(status_code=404, detail="Post not found")
+        
+        # Delete the post
+        result = await posts_collection.delete_one({"_id": post_object_id})
+
+        # Check if a post was actually deleted
+        if result.deleted_count == 0:
+            raise HTTPException(status_code=404, detail="Post not found")
+
+        return {"message": "Post deleted successfully!"}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 

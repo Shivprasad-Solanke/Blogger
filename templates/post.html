@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Details</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- CSS File -->
     <link rel="stylesheet" href="/static/css/post.css">
 </head>
 <body>
@@ -15,20 +24,43 @@
     <!-- Post Content -->
     <main>
         <div class="post-container">
-            <h1 id="post-title"></h1>
+            <!-- Post Title -->
+            <h1 id="post-title" class="roboto-serif-heading">Loading...</h1>
+
+            <!-- Post Metadata -->
             <div class="post-meta">
-                <span id="post-author"></span>|<span id="post-timestamp"></span>
+                <span id="post-author">Author: Loading...</span>
+                <span id="post-timestamp">Timestamp: Loading...</span>
             </div>
-            <div id="post-content"></div>
+
+            <!-- Post Content -->
+            <div id="post-content" class="merriweather-regular">Fetching content...</div>
+
+            <!-- Post Stats (Like and Dislike) -->
             <div class="post-stats">
-                <button id="like-button"><i class="fas fa-thumbs-up"></i><span id="like-count">0</span></button>
-                <button id="dislike-button"><i class="fas fa-thumbs-down"></i><span id="dislike-count">0</span></button>
+                <button id="like-button" aria-label="Like post">
+                    <i class="fa-regular fa-thumbs-up fa-lg like"></i>
+                    <i class="fa-solid fa-thumbs-up fa-lg liked hidden"></i>
+                </button>
+                <span id="like-count">0</span>
+                <button id="dislike-button" aria-label="Dislike post">
+                    <i class="fa-regular fa-thumbs-down fa-lg dislike"></i>
+                    <i class="fa-solid fa-thumbs-down fa-lg disliked hidden"></i>
+                </button>
+                <span id="dislike-count">0</span>
             </div>
+
+            <!-- Comments Section -->
             <div class="post-comments">
-                <h3>Comments (<span id="comment-count"></span>)</h3>
-                <ul id="comments-list"></ul>
+                <h3 class="roboto-serif-subheading">Comments (<span id="comment-count">0</span>)</h3>
+                <ul id="comments-list" class="merriweather-regular">
+                    <!-- Dynamically loaded comments will appear here -->
+                </ul>
             </div>
+
+            <!-- Comment Form -->
             <div class="comment-form">
+                <label for="new-comment" class="merriweather-regular">Add a comment:</label>
                 <textarea id="new-comment" placeholder="Write your comment here..." rows="4"></textarea>
                 <button id="submit-comment">Submit Comment</button>
             </div>
@@ -37,7 +69,9 @@
 
     <!-- Footer -->
     <div id="footer"></div>
-    
+    <script src="/static/js/shared/footer.js" defer></script>
+
+    <!-- Page-Specific JS -->
+    <script src="/static/js/post.js" defer></script>
 </body>
-<script src="/static/js/post.js" defer></script>
 </html>

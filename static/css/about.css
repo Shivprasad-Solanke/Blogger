@@ -1,0 +1,43 @@
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --navbar-bg: #f4f4f9;
+    --navbar-text: #333;
+    --card-bg: #ffffff;
+    --hover-color: #f64e00;
+    --footer-bg: #3c3c3e48;
+    --footer-text-color: #fdf5f5;
+    --primary-color: #ffffff;
+}
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #444;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+
+
+        #signup{
+            color: var(--hover-color);
+        }

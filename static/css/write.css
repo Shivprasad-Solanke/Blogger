@@ -113,8 +113,7 @@ main {
     margin-bottom: 1.5rem;
 }
 
-.editor input,
-.editor textarea {
+.editor input, textarea {
     width: 95%;
     padding: 1rem;
     color: var(--text-color);
@@ -123,11 +122,19 @@ main {
     border: 1px solid #ddd;
     margin-left: 0.45rem;
     background-color: var(--input-bg);
+    /* border: px solid black; */
+    outline: none;
    
 }
 
 .editor input[type="file"] {
     margin-bottom: 1.5rem;
+}
+
+.editor input:focus
+,textarea:focus{
+    border: 1.5px solid  var(--hover-color);
+    box-shadow: 0 0 5px rgba(255, 98, 0, 0.5);
 }
 
 button {

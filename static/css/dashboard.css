@@ -1,27 +1,24 @@
-/* Reset default margins and paddings */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Define base colors and background */
 :root {
     --bg-color: #f4f4f9;
     --text-color: #333;
     --navbar-bg: #ffffff;
     --navbar-text: #000000;
-    --highlight-color: #000000;
     --footer-bg: #ffffff;
     --card-bg: #ffffff;
 }
 
-/* Body and General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    min-height: 100vh; /* Ensure the body covers the full viewport height */
+    min-height: 60vh; 
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -30,35 +27,49 @@ body {
 /* Main content */
 .main-content {
     display: flex;
-    flex-direction: column; /* Stack the elements vertically */
-    align-items: center; /* Center the content */
-    margin: 2rem auto;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0.68rem auto;
     gap: 2rem;
     width: 100%;
     max-width: 1200px;
-    flex: 1; /* Allow main content to grow and push the footer down */
+    flex: 1; 
 }
 
 
 .search-bar {
-    padding: 1rem;
+    margin-top: 2rem;
     text-align: center;
 }
 
 .search-bar input {
-    width: 60%;
-    padding: 0.5rem;
-    border-radius: 5px;
+    width: 70%;
+    padding: 1rem;
+    border-radius: 25px;
     border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    border: none;
+    outline: none;
+}
+
+.search-bar input:focus {
+    border: 2px solid var(--hover-color);
 }
 
 .search-bar button {
-    background: var(--navbar-bg);
-    color: var(--navbar-text);
+    padding: 1rem;
+    background: var(--text-color);
+    color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
+    margin-left: -3rem;
+    font-size: 1rem;
+}
+
+.search-bar button:hover {
+    background: var(--hover-color);
 }
 
 
@@ -68,7 +79,7 @@ h2 {
     font-weight: bold;
     color: #000000;
     text-align: center;
-    margin-bottom: 1rem; /* Adds space between the heading and the cards */
+    margin-bottom: 1rem;
 }
 
 .hero-section {
@@ -100,7 +111,7 @@ h2 {
 .post-card {
     background: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -115,7 +126,7 @@ h2 {
 }
 
 .post-card:hover {
-    transform: translateY(-10px);
+    /* transform: translateY(-10px); */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -158,9 +169,9 @@ footer {
     padding: 1rem 0;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    position: relative; /* Ensures proper stacking above content */
+    position: relative;
     bottom: 0;
-    margin-top: auto; /* Pushes footer to the bottom if content is short */
+    margin-top: auto;
 }
 
 .post-card {
@@ -195,7 +206,7 @@ footer {
     border-radius: 5px;
     overflow: hidden;
     z-index: 1000;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
 .menu-options.hidden {
@@ -217,7 +228,7 @@ footer {
 }
 
 .menu-option:hover {
-    background: var(--highlight-color);
+    background: var(--hover-color);
     color: white;
 }
 .hidden {

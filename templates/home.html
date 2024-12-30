@@ -6,6 +6,8 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/static/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
     
 </head>
 <body>
@@ -15,11 +17,11 @@
 
     <!-- Search Bar (Centered) -->
     <div class="search-bar">
-        <form id="search-form">
+        <form id="search-form" action="http://127.0.0.1:8000/posts">
             <input type="text" id="search-input" placeholder="Search your posts..."/>
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
-    </div>>
+    </div>
     <!-- Main Content -->
     <main>
         <div class="blog-container" id="blog-container">
@@ -28,9 +30,8 @@
     </main>
 
     <!-- Footer -->
-    <div id="footer"></div>
-    <script src="/static/js/shared/footer.js" defer></script>
-
+   
+<div id="footer"></div>
     
     <!-- Scripts -->
     <script src="/static/js/home.js" type="module" defer></script>

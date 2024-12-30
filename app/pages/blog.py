@@ -46,19 +46,3 @@ async def get_post(post_id: str):
     
     return {"post": post}
 
-# DELETE route for deleting a post
-@blog_router.delete("/post/{post_id}/")
-async def delete_post(post_id: str):
-    # Convert the post_id to ObjectId
-    try:
-        post_object_id = ObjectId(post_id)
-    except Exception as e:
-        raise HTTPException(status_code=400, detail="Invalid post_id format")
-
-    # Delete the post from the collection
-    result = await posts_collection.delete_one({"_id": post_object_id})
-
-    if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="Post not found")
-
-    return {"message": "Post deleted successfully"}

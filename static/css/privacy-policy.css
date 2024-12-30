@@ -1,0 +1,63 @@
+/* privacy_policy.css */
+
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --navbar-bg: #f4f4f9;
+    --navbar-text: #333;
+    --card-bg: #ffffff;
+    --hover-color: #f64e00;
+    --footer-bg: #3c3c3e48;
+    --footer-text-color: #fdf5f5;
+    --primary-color: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.privacy-section {
+    padding: 20px;
+    /* background-color: var(--bg-color); */
+}
+
+.privacy-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    color: #444;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--text-color);
+    font-size: 1.8em;
+    margin-top: 30px;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+a {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

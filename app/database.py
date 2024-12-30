@@ -11,3 +11,8 @@ posts_collection = db.posts
 comments_collection = db.comments
 likes_collection = db.likes
 dislikes_collection = db.dislikes
+# contact_msg=db.contact
+contactmsg=db.contact_message
+
+
+

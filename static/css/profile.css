@@ -14,12 +14,13 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 2rem auto;
     background: #fff;
-    padding: 1.5rem;
+    padding: 1.95rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    margin-bottom: 9rem;
 }
 
 .profile-header {
@@ -32,10 +33,16 @@ body {
     flex-direction: column;
     gap: 1.5rem;
 }
-
+.user-details{
+    margin: 0 auto;
+}
 .user-details p {
     font-size: 1rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem ;
+
+}
+.user-details p span{
+    margin-left: 3rem;
 }
 
 .edit-name {
@@ -43,6 +50,8 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
+    /* margin-left: 9rem; */
+    margin: 0 auto;
 }
 
 #new-name {
@@ -52,15 +61,17 @@ body {
     border-radius: 4px;
     width: 100%;
     max-width: 400px;
+    margin: 0.5rem;
 }
 
 #update-name-btn {
     padding: 0.5rem 1rem;
-    background-color: #007bff;
+    background-color: #f64e00;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin: 0.4rem auto;
 }
 
 #update-name-btn:hover {

@@ -73,6 +73,7 @@ h1 {
 .post-comments h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 #comments-list {
@@ -101,6 +102,9 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
 }
+.merriweather-regular{
+    color: var(--text-color);
+}
 
 #new-comment {
     width: 100%;
@@ -117,9 +121,10 @@ h1 {
 
 #new-comment:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: var(--hover-color); /* Use your CSS variable for hover color */
+    box-shadow: 0 0 5px rgba(255, 98, 0, 0.5);
 }
+
 
 #user {
     opacity: 0.4;
@@ -143,6 +148,10 @@ h1 {
 #submit-comment:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+#footer{
+    margin-top: 1rem;
 }
 
 

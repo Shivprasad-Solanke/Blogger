@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr  # BaseModel for models, EmailStr for email validation
 from typing import List  # For list-based models
+from typing import Optional
 
 
 # USER REGISTER
@@ -36,8 +37,13 @@ class DislikeRequest(BaseModel):
     post_id: str  # Post being liked
     user_id: str  # User liking the post
 
+class Contact_Message(BaseModel):
+    name: str
+    email: EmailStr
+    message: str
+    # user_id: Optional[str] = None
 
-from pydantic import BaseModel, EmailStr
+
 
 class UserCreate(BaseModel):
     name: str
