@@ -3,6 +3,8 @@ FROM python:3.10-slim
 
 # Step 2: Set working directory in the container
 WORKDIR /app
+#Install dependencies, including nginx
+RUN apt-get update && apt-get install -y nginx && apt-get clean
 
 # Step 3: Copy application files into the container
 COPY app/ /app/app
