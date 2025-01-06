@@ -7,7 +7,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y nginx && apt-get clean
 
 # Step 3: Copy application files into the container
-COPY app/ /app/app
+COPY app/ /app/
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
 # Step 4: Copy the requirements.txt file from the root directory
