@@ -1,56 +1,51 @@
-/* :root {
-    --bg-color: #f4f4f9;
-    --text-color: #333;
-    --navbar-bg: #f4f4f9;
-    --navbar-text: #333;
-    --card-bg: #ffffff;
-} */
+/* General Variables */
 :root {
     --bg-color: #f4f4f9;
     --text-color: #333;
     --navbar-bg: #f4f4f9;
     --navbar-text: #333;
-    /* --card-bg: #ffffff; */
     --hover-color: #f64e00;
-    --footer-bg: #3c3c3e48;
+    --footer-bg: #3c3c3e;
     --footer-text-color: #fdf5f5;
-    /* --navbar-bg: #ffffff; */
 }
+
+/* General Body Styling */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    margin: 0;
+    display: flex;
+    flex-direction: column; /* Ensures footer is pushed down */
+    min-height: 100vh; /* Minimum height to cover viewport */
 }
+
+/* Navbar */
 #navbar {
     all: unset;
-    display: block; /* Restore default styles */
-    margin-bottom: 0;
+    display: block;
     background-color: #f4f4f4;
 }
-.container  {
+
+/* Container for Forms */
+.container {
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    flex: 1; /* Pushes the footer to the bottom */
     margin: 0;
-    margin-top: 0;
 }
 
-
 .form-container {
-    background-color: #f4f4f4;
     background: #fff;
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 400px;
-    margin-bottom: 10rem;
-    margin-top: 5rem;
+    margin: 5rem auto 10rem;
 }
 
 h1 {
@@ -95,14 +90,12 @@ a {
     text-decoration: none;
 }
 
-#footer{
+/* Footer */
+#footer {
     width: 100%;
-    position: fixed;
-    bottom: 0;
-    /* height: 4rem; */
-    /* padding-bottom: 1rem; */
-}
-#profile-icon{
-    margin: 0.5rem auto 1rem;
-   
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 1rem;
+    position: relative; /* Changed from fixed to relative */
 }

@@ -5,6 +5,9 @@
     --navbar-text: #333;
     --br-shadow: rgba(0, 0, 0, 0.1);
     --card-bg: #ffffff;
+    --footer-bg: #3c3c3e;    
+    --footer-text-color: #fdf5f5;
+
 }
 
 [data-theme="dark"] {

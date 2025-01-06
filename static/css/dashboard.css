@@ -10,7 +10,9 @@
     --text-color: #333;
     --navbar-bg: #ffffff;
     --navbar-text: #000000;
-    --footer-bg: #ffffff;
+    --footer-bg: #3c3c3e;
+    --footer-text-color: #fdf5f5;
+
     --card-bg: #ffffff;
 }
 
