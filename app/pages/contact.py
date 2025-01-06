@@ -1,6 +1,6 @@
 from fastapi import  HTTPException
-from app.database import contactmsg
-from app.models import Contact_Message
+from database import contactmsg
+from models import Contact_Message
 
 from fastapi import APIRouter, HTTPException
 from datetime import datetime, timezone

@@ -1,9 +1,9 @@
 from fastapi import APIRouter
-from app.auth.auth import auth_router
-from app.pages.reactions import reactions_router
-from app.pages.posts import posts_router
-from app.pages.profile import profile_router
-from app.pages.contact import contact_router
+from auth.auth import auth_router
+from pages.reactions import reactions_router
+from pages.posts import posts_router
+from pages.profile import profile_router
+from pages.contact import contact_router
 # Initialize the router instance
 router = APIRouter()
 

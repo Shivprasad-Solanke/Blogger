@@ -2,9 +2,9 @@ from fastapi import APIRouter, HTTPException, Depends
 from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta
-from app.database import users_collection
-from app.models import User
-from app.models import UserCreate, UserLogin
+from database import users_collection
+from models import User
+from models import UserCreate, UserLogin
 from bson import ObjectId
 
 SECRET_KEY = "your_secret_key"

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException
-from app.database import posts_collection  # MongoDB collection import
+from database import posts_collection  # MongoDB collection import
 from bson import ObjectId  # For handling ObjectId
-from app.pages.utils import convert_objectid  # Utility to convert ObjectId to string
-from app.models import Post
+from pages.utils import convert_objectid  # Utility to convert ObjectId to string
+from models import Post
 from datetime import datetime, timezone
 
 blog_router = APIRouter()

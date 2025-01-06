@@ -1,10 +1,10 @@
 from fastapi import APIRouter, HTTPException  # APIRouter for creating routes, HTTPException for error handling
 from fastapi.encoders import jsonable_encoder  # To convert MongoDB objects into JSON-friendly format
-from app.database import comments_collection, likes_collection, dislikes_collection, posts_collection, users_collection  # Relevant collections
+from database import comments_collection, likes_collection, dislikes_collection, posts_collection, users_collection  # Relevant collections
 from bson import ObjectId  # To work with MongoDB's ObjectId
 from datetime import datetime, timezone  # For timestamping
-from app.pages.utils import convert_objectid
-from app.models import Comment, LikeRequest, DislikeRequest
+from pages.utils import convert_objectid
+from models import Comment, LikeRequest, DislikeRequest
 from datetime import datetime, timezone
 
 reactions_router = APIRouter()

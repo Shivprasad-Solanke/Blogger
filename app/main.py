@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import router  # Import router to include all modular routes
+from routes import router  # Import router to include all modular routes
 
 app = FastAPI()
 

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Query, Path, Depends, Header
 from app.database import posts_collection, comments_collection, likes_collection, dislikes_collection, users_collection
-from app.models import Post, Comment, LikeRequest, DislikeRequest
+from models import Post, Comment, LikeRequest, DislikeRequest
 from bson import ObjectId
-from app.pages.utils import convert_objectid
+from pages.utils import convert_objectid
 from fastapi.responses import FileResponse
 import os
 from fastapi.responses import HTMLResponse
@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from jose import jwt, JWTError
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from app.models import User
+from models import User
 from fastapi import Request, APIRouter
 from fastapi.responses import JSONResponse
 

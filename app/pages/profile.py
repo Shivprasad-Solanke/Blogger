@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Query, Path, Depends, Header
-from app.database import users_collection, posts_collection
-from app.models import Post, User
+from database import users_collection, posts_collection
+from models import Post, User
 from bson import ObjectId
-from app.pages.utils import convert_objectid
+from pages.utils import convert_objectid
 from fastapi.responses import FileResponse
 import os
 from fastapi.responses import HTMLResponse
