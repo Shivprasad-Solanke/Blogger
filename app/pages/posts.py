@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Query, Path, Depends, Header
-from app.database import posts_collection, comments_collection, likes_collection, dislikes_collection, users_collection
+from database import posts_collection, comments_collection, likes_collection, dislikes_collection, users_collection
 from models import Post, Comment, LikeRequest, DislikeRequest
 from bson import ObjectId
 from pages.utils import convert_objectid
