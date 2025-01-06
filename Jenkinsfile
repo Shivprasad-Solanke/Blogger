@@ -6,7 +6,7 @@ pipeline {
         CONTAINER_NAME = "blogger_container"
         MONGO_DATA = "/data/mongo"
         GIT_REPO = "https://github.com/Shivprasad-Solanke/Blogger.git"
-        DOCKER_COMPOSE = '/usr/local/bin/docker-compose'  // Path to Docker Compose binary
+        DOCKER_COMPOSE = '/usr/bin/docker-compose'  // Path to Docker Compose binary
     }
 
     stages {
