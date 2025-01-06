@@ -2,7 +2,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import MongoClient  # For database connection
 
 
-client = AsyncIOMotorClient("mongodb://localhost:27017")
+client = AsyncIOMotorClient("mongodb://mongo:27017")
 db = client["blog_database"]
 
 # Collections
