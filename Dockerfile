@@ -14,16 +14,9 @@ COPY requirements.txt /app/requirements.txt
 # Step 5: Install Python dependencies
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Step 6: Install MongoDB
-RUN apt-get update && apt-get install -y mongodb && apt-get clean
-
-# Step 7: Create MongoDB data directory
-RUN mkdir -p /data/db
-
-# Step 8: Expose ports
-# Port 27017 for MongoDB
+# Step 6: Expose ports
 # Port 80 for Nginx and FastAPI
-EXPOSE 27017 80
+EXPOSE 80
 
-# Step 9: Start MongoDB, Uvicorn (FastAPI), and Nginx together
-CMD ["sh", "-c", "mongod --fork --logpath /var/log/mongodb.log --dbpath /data/db && uvicorn main:app --host 0.0.0.0 --port 8000 & nginx -g 'daemon off;'"]
+# Step 7: Start Uvicorn (FastAPI) and Nginx together
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port 8000 & nginx -g 'daemon off;'"]

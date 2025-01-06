@@ -6,6 +6,7 @@ pipeline {
         CONTAINER_NAME = "blogger_container"
         MONGO_DATA = "/data/mongo"
         GIT_REPO = "https://github.com/Shivprasad-Solanke/Blogger.git"
+        DOCKER_COMPOSE = '/usr/local/bin/docker-compose'  // Path to Docker Compose binary
     }
 
     stages {
@@ -16,32 +17,29 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Build Docker Images with Docker Compose') {
             steps {
-                echo "Building Docker image..."
-                sh 'docker build -t ${IMAGE_NAME} .'
-            }
-        }
-
-        stage('Stop Existing Container') {
-            steps {
-                echo "Stopping and removing existing container if it exists..."
+                echo "Building Docker images using Docker Compose..."
                 sh '''
-                docker stop ${CONTAINER_NAME} || true
-                docker rm ${CONTAINER_NAME} || true
+                ${DOCKER_COMPOSE} -f docker-compose.yml build
                 '''
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Stop Existing Containers') {
             steps {
-                echo "Running the Docker container..."
+                echo "Stopping and removing existing containers if they exist..."
                 sh '''
-                docker run -d \
-                --name ${CONTAINER_NAME} \
-                -p 80:80 \
-                -v ${MONGO_DATA}:/data/db \
-                ${IMAGE_NAME}
+                ${DOCKER_COMPOSE} down || true
+                '''
+            }
+        }
+
+        stage('Start Services') {
+            steps {
+                echo "Starting Docker Compose services..."
+                sh '''
+                ${DOCKER_COMPOSE} up -d
                 '''
             }
         }
