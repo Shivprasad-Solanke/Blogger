@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fetch user details
     function fetchUserProfile() {
-        const url = `http://127.0.0.1:8000/profile?user_id=${userId}`;
+        const url = `/api/profile?user_id=${userId}`;
         fetch(url, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const url = "http://127.0.0.1:8000/profile";
+        const url = "/api/profile";
         fetch(url, {
             method: "PUT",
             headers: {

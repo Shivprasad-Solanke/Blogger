@@ -51,7 +51,7 @@ async def signup(user: UserCreate):
 
     return {"message": "User registered successfully", "id": str(result.inserted_id)}
 
-@auth_router.post("/login/")
+@auth_router.post("/api/login/")
 async def login(user: UserLogin):
     # Find the user by email
     db_user = await users_collection.find_one({"email": user.email})

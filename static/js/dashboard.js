@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fetch posts based on the user_id and optional query
     function fetchPosts(userId, query = "") {
-        let apiUrl = `http://127.0.0.1:8000/posts?user_id=${userId}`;
+        let apiUrl = `/api/posts?user_id=${userId}`;
         if (query) {
             apiUrl += `&query=${encodeURIComponent(query)}`;
         }
@@ -134,7 +134,7 @@ menuContainer.querySelector(".delete").addEventListener("click", async () => {
     if (confirmation) {
         try {
             // DELETE request to the FastAPI backend
-            const response = await fetch(`http://127.0.0.1:8000/posts/${post._id}`, {
+            const response = await fetch(`/api/posts/${post._id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json", // Optional if sending JSON body

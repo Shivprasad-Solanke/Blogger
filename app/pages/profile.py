@@ -21,7 +21,7 @@ class UpdateUserName(BaseModel):
 
 
 # Route to get user profile
-@profile_router.get("/profile")
+@profile_router.get("/api/profile")
 async def get_user_profile(user_id: str):
     try:
         # Fetch user from the database

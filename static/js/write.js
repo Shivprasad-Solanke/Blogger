@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Send the data to the backend
         try {
-            const response = await fetch("http://127.0.0.1:8000/write", {
+            const response = await fetch("/api/write", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 contact_router = APIRouter()
 
 
-@contact_router.post("/contact")
+@contact_router.post("/api/contact")
 async def send_contact_message(contact: Contact_Message):
     # Insert contact message into MongoDB collection
     contact_dict = contact.dict()

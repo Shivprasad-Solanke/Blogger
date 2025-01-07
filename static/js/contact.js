@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Send data as JSON to FastAPI backend
         try {
-            const response = await fetch("http://127.0.0.1:8000/contact", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", // Send as JSON

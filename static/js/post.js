@@ -33,7 +33,7 @@
 //     }
 
 //     // Fetch user's reaction state when the page loads
-//     fetch(`http://127.0.0.1:8000/posts/${postId}/reactions?user_id=${userId}`, {
+//     fetch(`/api/posts/${postId}/reactions?user_id=${userId}`, {
 //         headers: {
 //             Authorization: `Bearer ${token}`,
 //         },
@@ -92,7 +92,7 @@
 //     // Toggle like functionality
 //     function toggleLike(postId, userId) {
 //         const method = hasLiked ? "DELETE" : "POST";
-//         const endpoint = "http://127.0.0.1:8000/like";
+//         const endpoint = "/api/like";
 
 //         fetch(endpoint, {
 //             method: method,
@@ -133,7 +133,7 @@
 //     // Toggle dislike functionality
 //     function toggleDislike(postId, userId) {
 //         const method = hasDisliked ? "DELETE" : "POST";
-//         const endpoint = "http://127.0.0.1:8000/dislike";
+//         const endpoint = "/api/dislike";
 
 //         fetch(endpoint, {
 //             method: method,
@@ -219,7 +219,7 @@
 //     }
 
 //     // Fetch post details
-//     fetch(`http://127.0.0.1:8000/posts/${postId}`)
+//     fetch(`/api/posts/${postId}`)
 //         .then((response) => response.json())
 //         .then((data) => renderPost(data.post))
 //         .catch((error) => console.error("Error fetching post:", error));
@@ -259,7 +259,7 @@
 //             content: commentText,
 //         };
 
-//         fetch("http://127.0.0.1:8000/comments", {
+//         fetch("/api/comments", {
 //             method: "POST",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -316,7 +316,7 @@
 //         const token = localStorage.getItem("access_token");
 //         const userId = parseJwt(token).id;
     
-//         fetch("http://127.0.0.1:8000/like", {
+//         fetch("/api/like", {
 //             method: "POST",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -344,7 +344,7 @@
 //         const token = localStorage.getItem("access_token");
 //         const userId = parseJwt(token).id;
     
-//         fetch("http://127.0.0.1:8000/dislike", {
+//         fetch("/api/dislike", {
 //             method: "POST",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -379,7 +379,7 @@
 // let hasDisliked = false;
 
 // // Fetch user's reaction state when the page loads
-// fetch(`http://127.0.0.1:8000/posts/${postId}/reactions?user_id=${userId}`, {
+// fetch(`/api/posts/${postId}/reactions?user_id=${userId}`, {
 //     headers: {
 //         Authorization: `Bearer ${token}`
 //     }
@@ -411,7 +411,7 @@
 // likeButton.addEventListener("click", () => {
 //     if (hasLiked) {
 //         // Remove like
-//         fetch("http://127.0.0.1:8000/like", {
+//         fetch("/api/like", {
 //             method: "DELETE",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -433,7 +433,7 @@
 //             .catch((error) => console.error("Error removing like:", error));
 //     } else {
 //         // Add like
-//         fetch("http://127.0.0.1:8000/like", {
+//         fetch("/api/like", {
 //             method: "POST",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -464,7 +464,7 @@
 // dislikeButton.addEventListener("click", () => {
 //     if (hasDisliked) {
 //         // Remove dislike
-//         fetch("http://127.0.0.1:8000/dislike", {
+//         fetch("/api/dislike", {
 //             method: "DELETE",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -486,7 +486,7 @@
 //             .catch((error) => console.error("Error removing dislike:", error));
 //     } else {
 //         // Add dislike
-//         fetch("http://127.0.0.1:8000/dislike", {
+//         fetch("/api/dislike", {
 //             method: "POST",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let hasDisliked = false;
 
     // Fetch user's reaction state when the page loads
-    fetch(`http://127.0.0.1:8000/posts/${postId}/reactions?user_id=${userId}`, {
+    fetch(`/api/posts/${postId}/reactions?user_id=${userId}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -571,7 +571,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch((error) => console.error("Error fetching reaction state:", error));
 
     // Fetch post details
-    fetch(`http://127.0.0.1:8000/posts/${postId}`)
+    fetch(`/api/posts/${postId}`)
         .then((response) => response.json())
         .then((data) => renderPost(data.post))
         .catch((error) => console.error("Error fetching post:", error));
@@ -612,7 +612,7 @@ document.addEventListener("DOMContentLoaded", () => {
             content: commentText,
         };
 
-        fetch("http://127.0.0.1:8000/comments", {
+        fetch("/api/comments", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -692,7 +692,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Toggle like functionality
     function toggleLike(postId, userId) {
         const method = hasLiked ? "DELETE" : "POST";
-        const endpoint = "http://127.0.0.1:8000/like";
+        const endpoint = "/api/like";
 
         fetch(endpoint, {
             method: method,
@@ -733,7 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Toggle dislike functionality
     function toggleDislike(postId, userId) {
         const method = hasDisliked ? "DELETE" : "POST";
-        const endpoint = "http://127.0.0.1:8000/dislike";
+        const endpoint = "/api/dislike";
 
         fetch(endpoint, {
             method: method,

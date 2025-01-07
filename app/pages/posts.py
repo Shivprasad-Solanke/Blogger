@@ -59,7 +59,7 @@ async def get_posts_details(filter_query=None):
 
     return post_details_list
 
-@posts_router.get("/posts")
+@posts_router.get("/api/posts")
 async def get_posts(
     user_id: str = None,
     query: str = Query(None, description="Search term for titles or tags")
@@ -93,7 +93,7 @@ async def get_posts(
     return {"posts": posts_details}
 
 
-@posts_router.get("/posts/{post_id}")
+@posts_router.get("/api/posts/{post_id}")
 async def get_post(post_id: str = Path(..., description="The ID of the post to retrieve")):
     try:
         post = await posts_collection.find_one({"_id": ObjectId(post_id)})
@@ -133,7 +133,7 @@ async def get_post(post_id: str = Path(..., description="The ID of the post to r
   
 
 # Route to create a new post
-@posts_router.post("/write")
+@posts_router.post("/api/write")
 async def create_post(post: Post):
     
     # Prepare the post data

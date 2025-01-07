@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function fetchPosts(query) {
-        let apiUrl = "http://127.0.0.1:8000/posts";
+        let apiUrl = "/api/posts";
         if (query) {
             apiUrl += `?query=${encodeURIComponent(query)}`;
         }

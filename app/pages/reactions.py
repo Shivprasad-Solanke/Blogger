@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 reactions_router = APIRouter()
 
 # POST COMMENT
-@reactions_router.post("/posts/{post_id}/comments/")
+@reactions_router.post("/api/posts/{post_id}/comments/")
 async def add_comment(post_id: str, comment: Comment):
     try:
         # Convert the post_id to ObjectId
@@ -34,7 +34,7 @@ async def add_comment(post_id: str, comment: Comment):
 
 
 # get COMMENTS
-@reactions_router.get("/posts/{post_id}/comments/")
+@reactions_router.get("/api/posts/{post_id}/comments/")
 async def get_comments(post_id: str):
     try:
         # Convert the post_id to ObjectId
@@ -61,7 +61,7 @@ async def get_comments(post_id: str):
 
 # LIKES 
 # post LIKES
-@reactions_router.post("/posts/{post_id}/like/")
+@reactions_router.post("/api/posts/{post_id}/like/")
 async def like_post(post_id: str, like_request: LikeRequest):
     try:
         # Convert post_id to ObjectId
@@ -85,7 +85,7 @@ async def like_post(post_id: str, like_request: LikeRequest):
 
 
 # GET LIKES
-@reactions_router.get("/posts/{post_id}/likes/")
+@reactions_router.get("/api/posts/{post_id}/likes/")
 async def get_likes(post_id: str):
     try:
         # Convert post_id to ObjectId
@@ -102,7 +102,7 @@ async def get_likes(post_id: str):
 
 # DISLIKES 
 # post DISLIKES
-@reactions_router.post("/posts/{post_id}/dislike/")
+@reactions_router.post("/api/posts/{post_id}/dislike/")
 async def dislike_post(post_id: str, dislike_request: DislikeRequest):
     try:
         post_object_id = ObjectId(post_id)  # Convert post_id to ObjectId
@@ -120,7 +120,7 @@ async def dislike_post(post_id: str, dislike_request: DislikeRequest):
 
 
 # get DISLIKES
-@reactions_router.get("/posts/{post_id}/dislikes/")
+@reactions_router.get("/api/posts/{post_id}/dislikes/")
 async def get_dislikes(post_id: str):
     try:
         post_object_id = ObjectId(post_id)  # Convert post_id to ObjectId
@@ -140,7 +140,7 @@ async def get_dislikes(post_id: str):
 
 from bson import ObjectId
 
-@reactions_router.post("/comments")
+@reactions_router.post("/api/comments")
 async def write_comment(comment_request: Comment):
     """
     Endpoint to allow a user to comment on a specific post.
@@ -202,7 +202,7 @@ async def write_comment(comment_request: Comment):
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
     
 
-@reactions_router.post("/like")
+@reactions_router.post("/api/like")
 async def like_post(like_request: LikeRequest):
     post_id = like_request.post_id
     user_id = like_request.user_id
@@ -235,7 +235,7 @@ async def like_post(like_request: LikeRequest):
 
 
 # dislike post
-@reactions_router.post("/dislike")
+@reactions_router.post("/api/dislike")
 async def dislike_post(dislike_request: DislikeRequest):
     post_id = dislike_request.post_id
     user_id = dislike_request.user_id
