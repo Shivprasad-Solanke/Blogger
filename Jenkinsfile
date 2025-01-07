@@ -10,11 +10,6 @@ pipeline {
     }
 
     stages {
-        stage('Install git on the system') {
-            steps {
-                yum install git
-            }
-        }
 
         stage('Clone Repository') {
             steps {
