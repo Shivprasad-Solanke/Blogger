@@ -29,7 +29,7 @@ def create_access_token(data: dict, expires_delta: timedelta = timedelta(minutes
     to_encode.update({"exp": datetime.utcnow() + expires_delta})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
-@auth_router.post("/signup/")
+@auth_router.post("/api/signup/")
 async def signup(user: UserCreate):
     # Check if email already exists
     existing_user = await users_collection.find_one({"email": user.email})
