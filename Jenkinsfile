@@ -6,14 +6,31 @@ pipeline {
         CONTAINER_NAME = "blogger_container"
         MONGO_DATA = "/data/mongo"
         GIT_REPO = "https://github.com/Shivprasad-Solanke/Blogger.git"
-        DOCKER_COMPOSE = '/usr/bin/docker-compose'  // Path to Docker Compose binary
+        DOCKER_COMPOSE = '/usr/local/bin/docker-compose'  // Path to Docker Compose binary
     }
 
     stages {
+        stage('Install git on the system') {
+            steps {
+                yum install git
+            }
+        }
+
         stage('Clone Repository') {
             steps {
                 echo "Cloning the repository..."
                 git branch: 'prod', url: "${GIT_REPO}"
+            }
+        }
+
+        stage('Installing Docker Compose') {
+            steps {
+                yum install docker
+                systemctl enable docker 
+                systemctl start docker
+                usermod -a -G docker ec2-user 
+                curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+                chmod +x /usr/local/bin/docker-compose
             }
         }
 
