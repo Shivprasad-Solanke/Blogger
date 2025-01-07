@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 # Step 2: Set working directory in the container
-WORKDIR .
+WORKDIR Blogger
 #Install dependencies, including nginx
 RUN apt-get update && apt-get install -y nginx && apt-get clean
 
