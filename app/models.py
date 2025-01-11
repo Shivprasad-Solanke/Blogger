@@ -37,12 +37,6 @@ class DislikeRequest(BaseModel):
     post_id: str  # Post being liked
     user_id: str  # User liking the post
 
-class Contact_Message(BaseModel):
-    name: str
-    email: EmailStr
-    message: str
-    # user_id: Optional[str] = None
-
 
 
 class UserCreate(BaseModel):

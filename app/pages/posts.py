@@ -163,9 +163,20 @@ async def delete(post_id: str = Path(..., description="The ID of the post to del
         # Check if a post was actually deleted
         if result.deleted_count == 0:
             raise HTTPException(status_code=404, detail="Post not found")
+        
+                # Delete associated comments
+        comments_result = await comments_collection.delete_many({"post_id": post_object_id})
 
-        return {"message": "Post deleted successfully!"}
+        # Delete associated likes and dislikes
+        likes_result = await likes_collection.delete_many({"post_id": post_object_id})
+        dislikes_result = await dislikes_collection.delete_many({"post_id": post_object_id})
 
+        return {
+            "message": "Post deleted successfully!",
+            "deleted_comments_count": comments_result.deleted_count,
+            "deleted_likes_count": likes_result.deleted_count,
+            "deleted_dislikes_count": dislikes_result.deleted_count,
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
