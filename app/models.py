@@ -47,3 +47,8 @@ class UserCreate(BaseModel):
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+
+class UpdatePostModel(BaseModel):
+    title: Optional[str]
+    content: Optional[str]
+    tags: Optional[List[str]]

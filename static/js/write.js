@@ -1,8 +1,4 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-    const root = document.documentElement;
-
-    // JWT Token from LocalStorage
     const token = localStorage.getItem("access_token");
     if (!token) {
         alert("User not authenticated. Please log in.");
@@ -10,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Decode JWT to get the author ID
     const authorId = parseJwt(token).id;
     if (!authorId) {
         alert("Failed to fetch user ID from token. Please log in again.");
@@ -22,33 +17,31 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("previewBtn").addEventListener("click", () => {
         const title = document.getElementById("blogTitle").value;
         const content = document.getElementById("blogContent").value;
-
-        // Set preview content, converting newlines to <br>
-    document.getElementById("previewTitle").textContent = title;
-    document.getElementById("previewContent").innerHTML = content.replace(/\n/g, "<br>");
-
-
-        // Display preview section
+        document.getElementById("previewTitle").textContent = title;
+        document.getElementById("previewContent").innerHTML = content.replace(/\n/g, "<br>");
         document.getElementById("preview").style.display = "block";
     });
 
     // Form submission functionality
     document.getElementById("blogForm").addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
 
-        const title = document.getElementById("blogTitle").value;
-        const content = document.getElementById("blogContent").value;
-        const tags = document.getElementById("blogTags").value.split(",").map(tag => tag.trim()); // Tags input
+        const title = document.getElementById("blogTitle").value.trim();
+        const content = document.getElementById("blogContent").value.trim();
+        const tags = document.getElementById("blogTags").value.split(",").map(tag => tag.trim());
 
-        // Construct the post object
+        if (!title || !content) {
+            alert("Title and content are required.");
+            return;
+        }
+
         const postData = {
-            title: title,
-            content: content,
-            author_id: authorId, // Add author_id from the JWT
-            tags: tags,
+            title,
+            content,
+            author_id: authorId,
+            tags,
         };
 
-        // Send the data to the backend
         try {
             const response = await fetch("http://127.0.0.1:8000/write", {
                 method: "POST",
@@ -60,8 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.ok) {
                 alert("Blog post created successfully!");
-                document.getElementById("blogForm").reset(); // Reset the form
-                document.getElementById("preview").style.display = "none"; // Hide preview
+                document.getElementById("blogForm").reset();
+                document.getElementById("preview").style.display = "none";
+                window.location.href = `/templates/dashboard.html`;
             } else {
                 const errorData = await response.json();
                 alert(`Error: ${errorData.detail || "Failed to create post."}`);
@@ -72,21 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Fetch and include the footer HTML
     fetch("/templates/shared/footer.html")
-        .then((response) => response.text())
-        .then((data) => (document.getElementById("footer").innerHTML = data));
+        .then(response => response.text())
+        .then(data => document.getElementById("footer").innerHTML = data);
 
-    // Function to decode JWT and extract payload
     function parseJwt(token) {
         const base64Url = token.split(".")[1];
         const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
         const jsonPayload = decodeURIComponent(
             atob(base64)
                 .split("")
-                .map((c) => {
-                    return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-                })
+                .map(c => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
                 .join("")
         );
         return JSON.parse(jsonPayload);
