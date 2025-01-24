@@ -10,6 +10,8 @@
     --navbar-bg: #ffffff;
 }
 
+
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -70,17 +72,15 @@ main {
 }
 
 .blog-container {
-    display: flex;
-    flex-direction: column; /* Stack cards vertically */
-    gap: 1rem; /* Space between the cards */
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 55vh;
+    max-width: 75rem;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-image: url('./assets/Blogger.webp');
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card {
-    width: 100%; /* Make each card take full width */
+    width: 95%; /* Make each card take full width */
     height: auto; /* Allow cards to resize dynamically */
     background: var(--card-bg);
     border: 1px solid #ddd;
@@ -88,6 +88,7 @@ main {
     padding: 1rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 1rem auto;
 }
 
 .card a {

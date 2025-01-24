@@ -1,21 +1,21 @@
 :root {
     --bg-color: #f4f4f9;
     --text-color: #333;
-    --navbar-bg: #f4f4f9;
+    --navbar-bg: #ffffff;
     --navbar-text: #333;
     --br-shadow: rgba(0, 0, 0, 0.1);
     --card-bg: #ffffff;
+    --input-bg: rgba(128, 128, 128, 0.03);
 }
 
-[data-theme="dark"] {
+/* [data-theme="dark"] {
     --bg-color: #181818;
     --text-color: #f4f4f9;
     --navbar-bg: #000;
     --navbar-text: #fff;
     --boder-color: #fff;
     --br-shadow: rgba(255, 255, 255, 0.444);
-    --input-bg: rgba(128, 128, 128, 0.163);
-}
+} */
 
 body {
     margin: 0;

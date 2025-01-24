@@ -17,11 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (token) {
             // User is logged in
             navbarRight.innerHTML = `
-            <a href="/templates/write.html"><i class="fas fa-pen-to-square"></i> Write</a>
+            <ul>
+                <li class="writepost"><a href="/templates/write.html"><i class="fas fa-pen-to-square write"></i> Write</a></li>
+            </ul>
             <div id="profile-icon"><i class="fas fa-user"></i></div>
 
                 <div id="user-sidebar" class="sidebar">
                     <ul>
+                    <li class="write"><a href="/templates/write.html"><i class="fas fa-pen-to-square write"></i> Write</a></li>
                     <li><a href="/templates/home.html"><i class="fas fa-home"></i>Home</a></li>
                         <li><a href="/templates/dashboard.html"><i class="fas fa-table-list"></i>Dashboard</a></li>
                         <li><a href="/templates/profile.html"><i class="fas fa-user"></i>Profile</a></li>
